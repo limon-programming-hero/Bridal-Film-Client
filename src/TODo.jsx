@@ -1,2 +1,13 @@
-// add navbar
-// add footer
+// add navbar [done]
+// add footer [done]
+// add gallery [todo]
+// add blog [done]
+// add about [done]
+// add authentication--- firebase [processing]
+// add authorization--- jwt [todo]
+// add booking section [todo]
+// send request to add self picture to public section -- item post [todo]
+// send request to update self picture from public section -- item update [todo]
+// send request to delete self picture from public section -- item delete [todo]
+// user dashboard [todo]
+// admin dashboard [todo]

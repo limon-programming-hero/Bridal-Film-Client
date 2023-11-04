@@ -9,7 +9,7 @@ const Home = () => {
       <HomeCarousel></HomeCarousel>
       <HomeAbout></HomeAbout>
       <HomeWorks></HomeWorks>
-      <ItemsTab></ItemsTab>
+      <ItemsTab location={"home"}></ItemsTab>
     </div>
   );
 };

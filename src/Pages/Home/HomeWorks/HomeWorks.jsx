@@ -14,6 +14,7 @@ import image6 from "../../../assets/Images/Home/Works/6.jpg";
 import image7 from "../../../assets/Images/Home/Works/7.jpg";
 import image8 from "../../../assets/Images/Home/Works/8.jpg";
 import image9 from "../../../assets/Images/Home/Works/9.jpg";
+import { BsInstagram } from "react-icons/bs";
 
 const HomeWorks = () => {
   const img = [
@@ -28,7 +29,12 @@ const HomeWorks = () => {
     image9,
   ];
   return (
-    <>
+    <div className="relative">
+      <div className="px-5">
+        <button className="text-white btn btn-secondary rounded-none -mx-14 absolute top-32 left-1/2 z-10">
+          <BsInstagram></BsInstagram> Follow Me
+        </button>
+      </div>
       <Swiper
         className="h-72"
         autoplay={{
@@ -52,7 +58,7 @@ const HomeWorks = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+    </div>
   );
 };
 

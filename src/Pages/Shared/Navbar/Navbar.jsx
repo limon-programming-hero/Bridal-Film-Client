@@ -1,17 +1,65 @@
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/logo.png";
+import UseAuth from "../../../Hooks/UseAuth";
+import { BsFillCartCheckFill } from "react-icons/bs";
+import Swal from "sweetalert2";
 const Navbar = () => {
+  const { user, loading, logOut } = UseAuth();
+  const handlerLogOut = () => {
+    logOut()
+      .then(() => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Successfully logged out!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        // An error happened.
+        console.log(error);
+      });
+  };
   const list = (
-    <>
+    <div className="flex gap-x-3">
       <li>
-        <a>Item 1</a>
+        <NavLink className="focus:glass" to="/blog">
+          Blog
+        </NavLink>
       </li>
       <li>
-        <a>Item 3</a>
+        <NavLink className="focus:glass" to="/gallery">
+          Gallery
+        </NavLink>
       </li>
-    </>
+      <li>
+        <NavLink className="focus:glass" to="/about">
+          About Me
+        </NavLink>
+      </li>
+      <li>
+        {user ? (
+          <button onClick={handlerLogOut} className="focus:glass">
+            Log out
+          </button>
+        ) : (
+          <NavLink className="focus:glass" to="/logIn">
+            LogIn
+          </NavLink>
+        )}
+      </li>
+      {user && !loading && (
+        <li>
+          <NavLink className="focus:glass" to="/secret">
+            <BsFillCartCheckFill></BsFillCartCheckFill>
+          </NavLink>
+        </li>
+      )}
+    </div>
   );
   return (
-    <div className="navbar text-white bg-black bg-opacity-60 ">
+    <div className="navbar z-20 text-white bg-black bg-opacity-60 ">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -37,7 +85,9 @@ const Navbar = () => {
             {list}
           </ul>
         </div>
-        <img className="w-40 h-fit " src={logo} alt="Bridal Film" />
+        <Link className="bg-white rounded-s-full bg-opacity-20" to="/">
+          <img className="w-40 h-fit " src={logo} alt="Bridal Film" />
+        </Link>
       </div>
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{list}</ul>

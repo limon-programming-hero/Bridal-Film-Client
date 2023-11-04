@@ -4,7 +4,7 @@ const HomeAbout = () => {
   const bgColor = isBlack ? "bg-black" : "bg-white";
   const textColor = isBlack ? "text-white" : "text-black";
   const cardInfo = [
-    { number: 155, title: "Finished Photosessions" },
+    { number: 155, title: "Finished Photo Sessions" },
     { number: 105, title: "Studio Sessions" },
     { number: 125, title: "Happy Clients" },
   ];
