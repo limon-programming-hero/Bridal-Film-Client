@@ -10,7 +10,12 @@ const SignUp = () => {
   const path = location?.state?.from?.pathname || "/";
 
   const { SignUpWithEmail, addNameAndPhoto } = UseAuth();
-  const { register, handleSubmit, errors } = useForm();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   //imgbb link with api key
   const imageLink = `https://api.imgbb.com/1/upload?key=${
@@ -38,14 +43,33 @@ const SignUp = () => {
         console.log(user);
         // adding user name and profile picture
         addNameAndPhoto(name, imageData?.display_url).then(() => {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Signed up successfully",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          navigate(path);
+          // const email = user.email;
+          const userDetails = {
+            name,
+            email,
+            image: user?.photoURL,
+          };
+          // adding user to database
+          axios
+            .post("http://localhost:3000/users", { userDetails })
+            .then((res) => {
+              console.log({ userToDb: res?.data });
+              // jwt token signed in
+              axios
+                .post("http://localhost:3000/jwt-signIn", { email })
+                .then((res) => {
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Logged In successfully!",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+                  localStorage.setItem("jwt-token", res?.data);
+                  // console.log({ jwt: res?.data });
+                  navigate(path);
+                });
+            });
         });
       })
       .catch((error) => {
@@ -118,13 +142,24 @@ const SignUp = () => {
               <input
                 type="password"
                 placeholder="password"
-                {...register("password", { required: true })}
+                {...register("password", {
+                  required: true,
+                  pattern:
+                    /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z!#$%&? "])[a-zA-Z0-9!#$%&?]{6,16}$/,
+                })}
                 className="input input-bordered"
               />
-              {errors?.password && (
+              {errors?.password?.type === "required" && (
                 <p className="text-red-500 text-sm mt-1">
                   Password is required
                 </p>
+              )}
+              {errors?.password?.type === "pattern" && (
+                <small className="text-sm">
+                  password must carry one upper case, one lower case, one
+                  number, one special character , minimum of 6 character and
+                  maximum 16 character
+                </small>
               )}
             </div>
             <div className="form-control mx-auto mt-6">

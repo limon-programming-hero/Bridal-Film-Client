@@ -15,6 +15,7 @@ const Navbar = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        localStorage.removeItem("jwt-token");
       })
       .catch((error) => {
         // An error happened.

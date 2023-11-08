@@ -2,14 +2,49 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import UseAuth from "./../../Hooks/UseAuth";
 import Swal from "sweetalert2";
+import { AiFillGoogleCircle } from "react-icons/ai";
+import axios from "axios";
 
 const LogIn = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const path = location?.state?.from?.pathname || "/";
 
-  const { LogInWithEmail } = UseAuth();
+  const { LogInWithEmail, googleSignIn } = UseAuth();
   const { register, handleSubmit, errors } = useForm();
+
+  const googleSignInHandler = () => {
+    googleSignIn()
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        // const credential = GoogleAuthProvider.credentialFromResult(result);
+        const user = result.user;
+        console.log(user);
+        const email = user.email;
+        axios.post("http://localhost:3000/jwt-signIn", email).then((res) => {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Logged In successfully!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          localStorage.setItem("jwt-token", res?.data);
+          navigate(path);
+        });
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        Swal.fire({
+          position: "top-end",
+          icon: "warning",
+          title: "Email already signed up! Log in now",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
+  };
 
   const onSubmit = (data) => {
     console.log(data);
@@ -19,14 +54,18 @@ const LogIn = () => {
         // Signed up
         const user = userCredential.user;
         console.log(user);
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Signed up successfully",
-          showConfirmButton: false,
-          timer: 1500,
+        const email = user.email;
+        axios.post("http://localhost:3000/jwt-signIn", email).then((res) => {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Signed In successfully!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          localStorage.setItem("jwt-token", res?.data);
+          navigate(path);
         });
-        navigate(path);
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -98,6 +137,13 @@ const LogIn = () => {
                 className="btn px-10 w-fit btn-outline"
               />
             </div>
+            <div className="divider"></div>
+            <button
+              className="btn btn-circle rounded-full text-4xl mx-auto"
+              onClick={googleSignInHandler}
+            >
+              <AiFillGoogleCircle></AiFillGoogleCircle>
+            </button>
           </form>
           <div className="text-sm flex gap-2 justify-center mb-4 align-baseline">
             {`Don't have an account? `}

@@ -23,7 +23,7 @@ const ItemsTab = ({ location }) => {
     isBlog = false;
     isGallery = false;
   }
-  const { items, isItemsLoading } = UseItems();
+  const { items, isItemsLoading, isItemsRefetch } = UseItems();
   const tabDetails = [
     { name: "All", data: items },
     {
@@ -87,7 +87,7 @@ const ItemsTab = ({ location }) => {
             ))}
           </TabList>
         </div>
-        {/* this is tablist data or tab panel portion */}
+        {/* this is tablist data or tab panel portion. tab list is dynamic here*/}
         {tabDetails?.map((tabDetail, index) => (
           <TabPanel key={index}>
             {isItemsLoading && <Loader></Loader>}
@@ -95,7 +95,11 @@ const ItemsTab = ({ location }) => {
             {!isItemsLoading && isBlog && (
               <div className="w-full gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {tabDetail.data?.map((singleData, index) => (
-                  <BlogItemCard key={index} data={singleData}></BlogItemCard>
+                  <BlogItemCard
+                    key={index}
+                    refetch={isItemsRefetch}
+                    data={singleData}
+                  ></BlogItemCard>
                 ))}
               </div>
             )}

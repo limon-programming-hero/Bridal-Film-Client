@@ -1,8 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import UseAuth from "./UseAuth";
 // import { useState } from "react";
 
 const UseItems = () => {
+  const { user, loading } = UseAuth();
   // const [items, setItems] = useState([]);
   // const fashionItems = items?.filter((item) => item.category === "fashion");
   // const lifestyleItems = items?.filter((item) => item.category === "lifestyle");
@@ -10,10 +12,16 @@ const UseItems = () => {
   // const portraitsItems = items?.filter((item) => item.category === "portraits");
   // const studioItems = items?.filter((item) => item.category === "studio");
 
-  const { data: items = [], isLoading: isItemsLoading } = useQuery({
+  const {
+    data: items = [],
+    isLoading: isItemsLoading,
+    refetch: isItemsRefetch,
+  } = useQuery({
     queryKey: ["items"],
     queryFn: async () => {
-      return await axios("http://localhost:3000/items").then((data) => {
+      return await axios(
+        `http://localhost:3000/items?email=${!loading && user?.email}`
+      ).then((data) => {
         console.log({ data });
         // setItems(data.data);
         return data.data;
@@ -24,6 +32,7 @@ const UseItems = () => {
   return {
     items,
     isItemsLoading,
+    isItemsRefetch,
   };
 };
 
