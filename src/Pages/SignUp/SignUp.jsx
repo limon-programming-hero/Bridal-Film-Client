@@ -3,8 +3,11 @@ import { useForm } from "react-hook-form";
 import UseAuth from "./../../Hooks/UseAuth";
 import Swal from "sweetalert2";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { LineWave } from "react-loader-spinner";
 
 const SignUp = () => {
+  const [localLoading, setLocalLoading] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const path = location?.state?.from?.pathname || "/";
@@ -33,6 +36,7 @@ const SignUp = () => {
   };
   // login submit button
   const onSubmit = async (data) => {
+    setLocalLoading(true);
     const { name, image, email, password } = data;
     const imageData = await UploadImgHandler(image);
 
@@ -54,21 +58,8 @@ const SignUp = () => {
             .post("http://localhost:3000/users", { userDetails })
             .then((res) => {
               console.log({ userToDb: res?.data });
-              // jwt token signed in
-              axios
-                .post("http://localhost:3000/jwt-signIn", { email })
-                .then((res) => {
-                  Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Logged In successfully!",
-                    showConfirmButton: false,
-                    timer: 1500,
-                  });
-                  localStorage.setItem("jwt-token", res?.data);
-                  // console.log({ jwt: res?.data });
-                  navigate(path);
-                });
+              setLocalLoading(false);
+              navigate(path);
             });
         });
       })
@@ -163,11 +154,26 @@ const SignUp = () => {
               )}
             </div>
             <div className="form-control mx-auto mt-6">
-              <input
-                type="submit"
-                value="Sign Up"
-                className="btn px-10 w-fit btn-outline"
-              />
+              {localLoading ? (
+                <LineWave
+                  height="100"
+                  width="100"
+                  color="rgb(255, 145, 0)"
+                  ariaLabel="line-wave"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                  firstLineColor=""
+                  middleLineColor=""
+                  lastLineColor=""
+                />
+              ) : (
+                <input
+                  type="submit"
+                  value="Sign Up"
+                  className="btn px-10 w-fit btn-outline"
+                />
+              )}
             </div>
           </form>
           <div className="text-sm flex gap-2 justify-center mb-4 align-baseline">

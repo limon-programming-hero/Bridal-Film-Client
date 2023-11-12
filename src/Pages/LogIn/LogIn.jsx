@@ -4,8 +4,11 @@ import UseAuth from "./../../Hooks/UseAuth";
 import Swal from "sweetalert2";
 import { AiFillGoogleCircle } from "react-icons/ai";
 import axios from "axios";
+import { LineWave } from "react-loader-spinner";
+import { useState } from "react";
 
 const LogIn = () => {
+  const [localLoading, setLocalLoading] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const path = location?.state?.from?.pathname || "/";
@@ -15,23 +18,30 @@ const LogIn = () => {
 
   const googleSignInHandler = () => {
     googleSignIn()
-      .then((result) => {
+      .then(async (result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         // const credential = GoogleAuthProvider.credentialFromResult(result);
         const user = result.user;
         console.log(user);
-        const email = user.email;
-        axios.post("http://localhost:3000/jwt-signIn", email).then((res) => {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Logged In successfully!",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          localStorage.setItem("jwt-token", res?.data);
+        const isUser = await axios.get(
+          `http://localhost:3000/isUser?email=${user?.email}`
+        );
+        console.log({ isUser: isUser.data });
+        if (!isUser.data) {
+          const userDetails = {
+            name: user?.displayName,
+            email: user?.email,
+            image: user?.photoURL,
+          };
+          axios
+            .post("http://localhost:3000/users", { userDetails })
+            .then((res) => {
+              console.log({ userToDb: res?.data });
+              navigate(path);
+            });
+        } else {
           navigate(path);
-        });
+        }
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -47,6 +57,7 @@ const LogIn = () => {
   };
 
   const onSubmit = (data) => {
+    setLocalLoading(true);
     console.log(data);
     const { email, password } = data;
     LogInWithEmail(email, password)
@@ -64,6 +75,7 @@ const LogIn = () => {
             timer: 1500,
           });
           localStorage.setItem("jwt-token", res?.data);
+          setLocalLoading(false);
           navigate(path);
         });
       })
@@ -131,11 +143,26 @@ const LogIn = () => {
               </label>
             </div>
             <div className="form-control mx-auto mt-6">
-              <input
-                type="submit"
-                value="LogIn"
-                className="btn px-10 w-fit btn-outline"
-              />
+              {localLoading ? (
+                <LineWave
+                  height="100"
+                  width="100"
+                  color="rgb(255, 145, 0)"
+                  ariaLabel="line-wave"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                  firstLineColor=""
+                  middleLineColor=""
+                  lastLineColor=""
+                />
+              ) : (
+                <input
+                  type="submit"
+                  value="LogIn"
+                  className="btn px-10 w-fit btn-outline"
+                />
+              )}
             </div>
             <div className="divider"></div>
             <button

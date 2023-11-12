@@ -15,7 +15,6 @@ const Navbar = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        localStorage.removeItem("jwt-token");
       })
       .catch((error) => {
         // An error happened.
@@ -23,7 +22,7 @@ const Navbar = () => {
       });
   };
   const list = (
-    <div className="flex gap-x-3">
+    <div className="flex flex-col lg:flex-row gap-x-3">
       <li>
         <NavLink className="focus:glass" to="/blog">
           Blog
@@ -39,6 +38,13 @@ const Navbar = () => {
           About Me
         </NavLink>
       </li>
+      {user && !loading && (
+        <li>
+          <NavLink className="focus:glass" to="/dashboard">
+            <BsFillCartCheckFill></BsFillCartCheckFill>
+          </NavLink>
+        </li>
+      )}
       <li>
         {user ? (
           <button onClick={handlerLogOut} className="focus:glass">
@@ -50,13 +56,6 @@ const Navbar = () => {
           </NavLink>
         )}
       </li>
-      {user && !loading && (
-        <li>
-          <NavLink className="focus:glass" to="/secret">
-            <BsFillCartCheckFill></BsFillCartCheckFill>
-          </NavLink>
-        </li>
-      )}
     </div>
   );
   return (
@@ -81,7 +80,7 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52 h-fit bg-slate-600"
           >
             {list}
           </ul>

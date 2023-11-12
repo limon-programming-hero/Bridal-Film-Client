@@ -12,6 +12,7 @@ import {
 } from "firebase/auth";
 import app from "./firebaseConfig";
 import { PropTypes } from "prop-types";
+import axios from "axios";
 
 const auth = getAuth(app);
 // eslint-disable-next-line react-refresh/only-export-components
@@ -50,6 +51,15 @@ const AuthContextProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
+      if (currentUser) {
+        axios
+          .post("http://localhost:3000/jwt-signIn", {
+            email: currentUser?.email,
+          })
+          .then((res) => localStorage.setItem("jwt-token", res?.data));
+      } else {
+        localStorage.removeItem("jwt-token");
+      }
     });
     return () => {
       return unSubscribe;

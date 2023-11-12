@@ -1,33 +1,37 @@
-import axios from "axios";
 import PropTypes from "prop-types";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import UseAuth from "./../../Hooks/UseAuth";
+import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
 
 const BlogItemCard = ({ data, refetch }) => {
-  const { user } = UseAuth();
+  const [axiosSecure] = UseAxiosSecure();
+  const { user, loading } = UseAuth();
 
   const likeHandler = () => {
-    axios
-      .patch(`http://localhost:3000/items/${data?._id}`, {
+    if (!loading) {
+      const handlerData = {
         isLike: !data?.isLiked,
-      })
-      .then(async (res) => {
-        if (!data?.isLiked) {
-          const postData = { email: user?.email, itemId: data?._id };
-          const res = await axios.post("http://localhost:3000/likes", {
-            postData,
-          });
+        email: user?.email,
+      };
+      axiosSecure
+        .patch(`http://localhost:3000/items/${data?._id}`, handlerData)
+        .then(async (res) => {
+          if (!data?.isLiked) {
+            const postData = { email: user?.email, itemId: data?._id };
+            const res = await axiosSecure.post("/likes", {
+              postData,
+            });
+            console.log(res?.data);
+          } else {
+            const res = await axiosSecure.delete(`/likes/${data?.likedItemId}`);
+            console.log(res?.data);
+          }
+          refetch();
           console.log(res?.data);
-        } else {
-          const res = await axios.delete(
-            `http://localhost:3000/likes/${data?.likedItemId}`
-          );
-          console.log(res?.data);
-        }
-        refetch();
-        console.log(res?.data);
-      });
+        });
+    }
   };
+
   return (
     <div className="card h-[450px] w-full text-black shadow-xl">
       <figure>

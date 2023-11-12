@@ -9,6 +9,10 @@ import SignUp from "../Pages/SignUp/SignUp";
 import LogIn from "../Pages/LogIn/LogIn";
 import SecretPage from "./../Pages/SecretPage/SecretPage";
 import PrivateRoute from "./PrivateRoute";
+import DashboardLayout from "../Layout/DashboardLayout";
+import AdminHome from "../Pages/Dashboard/Admin/AdminHome/AdminHome";
+import ManageItems from "../Pages/Dashboard/Admin/ManageItems/ManageItems";
+import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers/ManageUsers";
 
 const router = createBrowserRouter([
   {
@@ -23,13 +27,32 @@ const router = createBrowserRouter([
       { path: "blog", element: <Blog></Blog> },
       { path: "signUp", element: <SignUp></SignUp> },
       { path: "logIn", element: <LogIn></LogIn> },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
+    children: [
       {
         path: "secret",
-        element: (
-          <PrivateRoute>
-            <SecretPage></SecretPage>
-          </PrivateRoute>
-        ),
+        element: <SecretPage></SecretPage>,
+      },
+      // admin section
+      {
+        path: "manageUsers",
+        element: <ManageUsers></ManageUsers>,
+      },
+      {
+        path: "manageItems",
+        element: <ManageItems></ManageItems>,
+      },
+      {
+        path: "adminHome",
+        element: <AdminHome></AdminHome>,
       },
     ],
   },
