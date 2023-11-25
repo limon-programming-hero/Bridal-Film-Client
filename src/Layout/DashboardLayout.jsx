@@ -83,6 +83,11 @@ const DashboardLayout = () => {
                     <IoIosAddCircle /> Add Session
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink to="/dashboard/allPayment">
+                    <IoIosAddCircle /> Payments
+                  </NavLink>
+                </li>
               </div>
             ) : (
               <div className="flex flex-col gap-y-2">

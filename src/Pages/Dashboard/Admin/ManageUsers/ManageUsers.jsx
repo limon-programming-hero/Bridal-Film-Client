@@ -104,7 +104,7 @@ const ManageUsers = () => {
                       )}
                     </td>
                   )}
-                  <th>
+                  <td>
                     {localLoading ? ( //if delete promise is loading
                       <ProgressBar
                         height="60"
@@ -123,7 +123,7 @@ const ManageUsers = () => {
                         <AiFillDelete />
                       </button>
                     )}
-                  </th>
+                  </td>
                 </tr>
               ))}
           </tbody>

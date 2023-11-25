@@ -39,7 +39,7 @@ const SessionAddUpdate = ({ session }) => {
     const featureArray = features.split(",").filter(Boolean);
     const sessionData = {
       sessionType,
-      price,
+      price: parseInt(price),
       image: imageData ? imageData.display_url : session?.image,
       features: featureArray,
     };

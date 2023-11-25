@@ -21,6 +21,8 @@ import AdminRoute from "./AdminRoute";
 import Sessions from "../Pages/Dashboard/Admin/Sessions/Sessions";
 import AddSession from "../Pages/Dashboard/Admin/AddSession/AddSession";
 import UpdateSession from "../Pages/Dashboard/Admin/UpdateSession/UpdateSession";
+import Payment from "../Pages/Dashboard/Payments/Payment";
+import AllPayments from "../Pages/Dashboard/Admin/AllPayments/AllPayments";
 
 const router = createBrowserRouter([
   {
@@ -78,6 +80,10 @@ const router = createBrowserRouter([
         element: <SecretPage />,
       },
       {
+        path: "payment",
+        element: <Payment />,
+      },
+      {
         path: "bookedSession",
         element: <UserBookingItems />,
       },
@@ -92,6 +98,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <ManageUsers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "allPayment",
+        element: (
+          <AdminRoute>
+            <AllPayments />
           </AdminRoute>
         ),
       },

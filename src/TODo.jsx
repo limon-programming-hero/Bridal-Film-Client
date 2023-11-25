@@ -19,6 +19,8 @@
 // make item list or panel dynamic [todo:future]
 // add booking section [done]
 // add user booking on session delete and send a delete message [done]
+// add payment method, get all payment and get payment history [done]
+// add get payment history for user[todo]
 // send request to add self picture to public section -- item post [todo]
 // send request to update self picture from public section -- item update [todo]
 // send request to delete self picture from public section -- item delete [todo]
