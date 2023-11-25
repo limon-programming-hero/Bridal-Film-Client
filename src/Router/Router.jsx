@@ -13,46 +13,135 @@ import DashboardLayout from "../Layout/DashboardLayout";
 import AdminHome from "../Pages/Dashboard/Admin/AdminHome/AdminHome";
 import ManageItems from "../Pages/Dashboard/Admin/ManageItems/ManageItems";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers/ManageUsers";
+import ContactPage from "../Pages/Dashboard/ContactPage/ContactPage";
+import Shop from "../Pages/Shop/Shop";
+import ManageBooking from "./../Pages/Dashboard/Admin/ManageBooking/ManageBooking";
+import UserBookingItems from "../Pages/Dashboard/User/UserBookingItems/UserBookingItems";
+import AdminRoute from "./AdminRoute";
+import Sessions from "../Pages/Dashboard/Admin/Sessions/Sessions";
+import AddSession from "../Pages/Dashboard/Admin/AddSession/AddSession";
+import UpdateSession from "../Pages/Dashboard/Admin/UpdateSession/UpdateSession";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
     children: [
-      { path: "", element: <Home></Home> },
-      { path: "home", element: <Home></Home> },
-      { path: "gallery", element: <Gallery></Gallery> },
-      { path: "blog", element: <Blog></Blog> },
-      { path: "about", element: <About></About> },
-      { path: "blog", element: <Blog></Blog> },
-      { path: "signUp", element: <SignUp></SignUp> },
-      { path: "logIn", element: <LogIn></LogIn> },
+      {
+        path: "",
+        element: <Home />,
+      },
+      {
+        path: "home",
+        element: <Home />,
+      },
+      {
+        path: "gallery",
+        element: <Gallery />,
+      },
+      {
+        path: "blog",
+        element: <Blog />,
+      },
+      {
+        path: "about",
+        element: <About />,
+      },
+      {
+        path: "blog",
+        element: <Blog />,
+      },
+      {
+        path: "signUp",
+        element: <SignUp />,
+      },
+      {
+        path: "logIn",
+        element: <LogIn />,
+      },
+      {
+        path: "shop",
+        element: <Shop />,
+      },
     ],
   },
   {
     path: "/dashboard",
     element: (
       <PrivateRoute>
-        <DashboardLayout></DashboardLayout>
+        <DashboardLayout />
       </PrivateRoute>
     ),
     children: [
       {
         path: "secret",
-        element: <SecretPage></SecretPage>,
+        element: <SecretPage />,
+      },
+      {
+        path: "bookedSession",
+        element: <UserBookingItems />,
+      },
+      //common routes
+      {
+        path: "contact",
+        element: <ContactPage />,
       },
       // admin section
       {
         path: "manageUsers",
-        element: <ManageUsers></ManageUsers>,
+        element: (
+          <AdminRoute>
+            <ManageUsers />
+          </AdminRoute>
+        ),
       },
       {
         path: "manageItems",
-        element: <ManageItems></ManageItems>,
+        element: (
+          <AdminRoute>
+            <ManageItems />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manageBooking",
+        element: (
+          <AdminRoute>
+            <ManageBooking />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manageSessions",
+        element: (
+          <AdminRoute>
+            <Sessions />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "addSession",
+        element: (
+          <AdminRoute>
+            <AddSession />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "updateSession/:id",
+        element: (
+          <AdminRoute>
+            <UpdateSession />
+          </AdminRoute>
+        ),
       },
       {
         path: "adminHome",
-        element: <AdminHome></AdminHome>,
+        element: (
+          <AdminRoute>
+            <AdminHome />
+          </AdminRoute>
+        ),
       },
     ],
   },

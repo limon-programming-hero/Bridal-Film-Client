@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import UseAuth from "./UseAuth";
 import { useNavigate } from "react-router-dom";
+// import Swal from "sweetalert2";
 
 const axiosSecure = axios.create({
   baseURL: "http://localhost:3000",
@@ -33,6 +34,13 @@ const UseAxiosSecure = () => {
           error.response &&
           (error.response.status === 401 || error.response.status === 403)
         ) {
+          // Swal.fire({
+          //   position: "top-end",
+          //   icon: "warning",
+          //   title: `${error.response?.data?.message}`,
+          //   showConfirmButton: false,
+          //   timer: 1500,
+          // });
           console.log(error);
           await logOut().then((res) => console.log(res));
           navigate("/logIn");

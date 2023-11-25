@@ -50,13 +50,16 @@ const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
       if (currentUser) {
         axios
           .post("http://localhost:3000/jwt-signIn", {
             email: currentUser?.email,
           })
-          .then((res) => localStorage.setItem("jwt-token", res?.data));
+          .then((res) => {
+            localStorage.setItem("jwt-token", res?.data);
+            setLoading(false);
+            console.log({ email: currentUser?.email });
+          });
       } else {
         localStorage.removeItem("jwt-token");
       }

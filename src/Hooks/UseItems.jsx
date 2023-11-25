@@ -18,9 +18,10 @@ const UseItems = () => {
     refetch: isItemsRefetch,
   } = useQuery({
     queryKey: ["items"],
+    enabled: !loading,
     queryFn: async () => {
       return await axios(
-        `http://localhost:3000/items?email=${!loading && user?.email}`
+        `http://localhost:3000/items?email=${user?.email}`
       ).then((data) => {
         console.log({ data });
         // setItems(data.data);

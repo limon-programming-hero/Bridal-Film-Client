@@ -1,24 +1,15 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import logo from "../assets/logo.png";
-import { useQuery } from "@tanstack/react-query";
-import UseAuth from "../Hooks/UseAuth";
-import UseAxiosSecure from "../Hooks/UseAxiosSecure";
 import { AiFillHome, AiOutlineUsergroupDelete } from "react-icons/ai";
+import { IoIosAddCircle } from "react-icons/io";
 import { BsFillCartCheckFill, BsFillTelephoneFill } from "react-icons/bs";
+import { FaBookOpen, FaHome, FaShoppingCart } from "react-icons/fa";
+import UseIsAdmin from "./../Hooks/UseIsAdmin";
 const DashboardLayout = () => {
-  const { user, loading } = UseAuth();
-  const [axiosSecure] = UseAxiosSecure();
-  const { data: userFromDb, isLoading: isUserLoading } = useQuery({
-    queryKey: [user?.email, "users"],
-    enabled: !loading,
-    queryFn: async () => {
-      const res = await axiosSecure.get(`/users/${user?.email}`);
-      return res?.data[0];
-    },
-  });
-  // console.log(userFromDb);
+  const { isAdmin, isAdminLoading } = UseIsAdmin();
+  console.log(!isAdminLoading && isAdmin);
   return (
-    <div>
+    <div className="mx-auto max-w-[1280px]">
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-start m-10 justify-center">
@@ -57,21 +48,39 @@ const DashboardLayout = () => {
                 <img className="w-40 h-fit " src={logo} alt="Bridal Film" />
               </Link>
             </li>
-            {!isUserLoading && userFromDb?.role === "admin" ? (
+            {!isAdminLoading && isAdmin?.isAdmin ? (
               <div className="flex flex-col gap-y-2">
                 <li>
                   <NavLink to="/dashboard/adminHome">
-                    <AiFillHome></AiFillHome> Home
+                    <AiFillHome /> Home
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/manageUsers">
-                    <AiOutlineUsergroupDelete></AiOutlineUsergroupDelete> Users
+                    <AiOutlineUsergroupDelete />
+                    Users
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/manageItems">
-                    <BsFillCartCheckFill></BsFillCartCheckFill>Items
+                    <BsFillCartCheckFill />
+                    Items
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/manageBooking">
+                    <FaBookOpen />
+                    Booking
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/manageSessions">
+                    <FaShoppingCart /> Sessions
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/addSession">
+                    <IoIosAddCircle /> Add Session
                   </NavLink>
                 </li>
               </div>
@@ -80,11 +89,27 @@ const DashboardLayout = () => {
                 <li>
                   <NavLink to="/dashboard/secret">Home</NavLink>
                 </li>
+                <li>
+                  <NavLink to="/dashboard/bookedSession">
+                    Booked Sessions
+                  </NavLink>
+                </li>
               </div>
             )}
+            <div className="divider"></div>
             <li>
-              <NavLink to="/dashboard/secret">
-                <BsFillTelephoneFill></BsFillTelephoneFill> Contact Us
+              <NavLink to="/home">
+                <FaHome /> Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/shop">
+                <FaShoppingCart /> Shop
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/dashboard/contact">
+                <BsFillTelephoneFill /> Contact Us
               </NavLink>
             </li>
           </ul>

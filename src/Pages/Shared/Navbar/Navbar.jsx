@@ -3,6 +3,7 @@ import logo from "../../../assets/logo.png";
 import UseAuth from "../../../Hooks/UseAuth";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import Swal from "sweetalert2";
+import UseBooking from "./../../../Hooks/UseBooking";
 const Navbar = () => {
   const { user, loading, logOut } = UseAuth();
   const handlerLogOut = () => {
@@ -21,6 +22,7 @@ const Navbar = () => {
         console.log(error);
       });
   };
+  const { bookingItems, isBookingLoading } = UseBooking();
   const list = (
     <div className="flex flex-col lg:flex-row gap-x-3">
       <li>
@@ -34,13 +36,21 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li>
+        <NavLink className="focus:glass" to="/shop">
+          Shop
+        </NavLink>
+      </li>
+      <li>
         <NavLink className="focus:glass" to="/about">
           About Me
         </NavLink>
       </li>
       {user && !loading && (
-        <li>
+        <li className="relative">
           <NavLink className="focus:glass" to="/dashboard">
+            <span className="absolute font-bold text-secondary left-2 top-3">
+              {isBookingLoading ? 0 : bookingItems?.length}
+            </span>
             <BsFillCartCheckFill></BsFillCartCheckFill>
           </NavLink>
         </li>

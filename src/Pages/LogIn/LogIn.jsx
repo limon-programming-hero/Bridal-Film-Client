@@ -164,14 +164,14 @@ const LogIn = () => {
                 />
               )}
             </div>
-            <div className="divider"></div>
-            <button
-              className="btn btn-circle rounded-full text-4xl mx-auto"
-              onClick={googleSignInHandler}
-            >
-              <AiFillGoogleCircle></AiFillGoogleCircle>
-            </button>
           </form>
+          <div className="divider"></div>
+          <button
+            className="btn btn-circle rounded-full mb-5 text-4xl mx-auto"
+            onClick={googleSignInHandler}
+          >
+            <AiFillGoogleCircle></AiFillGoogleCircle>
+          </button>
           <div className="text-sm flex gap-2 justify-center mb-4 align-baseline">
             {`Don't have an account? `}
             <Link className="text-primary" to="/signUp">

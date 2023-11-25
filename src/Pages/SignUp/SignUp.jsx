@@ -110,8 +110,8 @@ const SignUp = () => {
                 className="file-input file-input-bordered w-full max-w-xs"
                 {...register("image", { required: true })}
               />
-              {errors?.name && (
-                <p className="text-red-500 text-sm mt-1">Name is required</p>
+              {errors?.image && (
+                <p className="text-red-500 text-sm mt-1">Image is required</p>
               )}
               <label className="label">
                 <span className="label-text">Email</span>

@@ -1,5 +1,11 @@
+import Shop from "../Shop/Shop";
+
 const SecretPage = () => {
-  return <div>this is SecretPage</div>;
+  return (
+    <div>
+      <Shop></Shop>
+    </div>
+  );
 };
 
 export default SecretPage;

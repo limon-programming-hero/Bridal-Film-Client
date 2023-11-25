@@ -67,7 +67,9 @@ const ManageItems = () => {
                   <td className="max-w-[250px] text-xs">{item?.body}</td>
                   <td>{item?.category}</td>
                   <td>{item?.likes ? item?.likes : 0}</td>
-                  <td className="text-xs">{item?.sharedEmail}</td>
+                  <td className="text-xs">
+                    {item?.sharedEmail ? item?.sharedEmail : "Admin"}
+                  </td>
                   <th>
                     {localLoading ? ( //if delete promise is loading
                       <ProgressBar
