@@ -64,7 +64,7 @@ const UserBookingItems = () => {
             {totalPrice ? (
               <Link
                 className="btn btn-outline btn-ghost btn-secondary"
-                to="/dashboard/payment"
+                to="/dashboard/makePayment"
               >
                 <span className="hover:text-white text-secondary">Payment</span>
               </Link>

@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import Loader from "../../../Shared/Loader/Loader";
 import UseSessions from "./../../../../Hooks/UseSessions";
 import { MdDelete, MdEdit } from "react-icons/md";
+import { motion } from "framer-motion";
+import rowAnimation from "../../../Shared/Animation/rowAnimation";
 
 const Sessions = () => {
   const { sessions, isSessionLoading } = UseSessions();
@@ -16,7 +18,7 @@ const Sessions = () => {
           <h3 className="text-4xl text-secondary font-semibold text-center mb-5">
             Manage All Booking Sessions
           </h3>
-          <div className="overflow-x-auto">
+          <div>
             <table className="table">
               {/* head */}
               <thead>
@@ -30,10 +32,17 @@ const Sessions = () => {
               </thead>
               <tbody>
                 {/* row 1 */}
-                {sessions.map((item) => {
+                {sessions.map((item, index) => {
                   const { _id, sessionType, image, features, price } = item;
                   return (
-                    <tr key={_id}>
+                    <motion.tr
+                      initial={"initial"}
+                      animate={"animate"}
+                      custom={index}
+                      key={index}
+                      viewport={{ once: true }}
+                      variants={rowAnimation}
+                    >
                       <td className="text-sm font-semibold">
                         <div className="flex gap-3">
                           <div className="avatar">
@@ -67,7 +76,7 @@ const Sessions = () => {
                           <MdDelete />
                         </button>
                       </td>
-                    </tr>
+                    </motion.tr>
                   );
                 })}
               </tbody>

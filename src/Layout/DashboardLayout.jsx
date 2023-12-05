@@ -68,6 +68,12 @@ const DashboardLayout = () => {
                   </NavLink>
                 </li>
                 <li>
+                  <NavLink to="/dashboard/addItem">
+                    <BsFillCartCheckFill />
+                    Add Item
+                  </NavLink>
+                </li>
+                <li>
                   <NavLink to="/dashboard/manageBooking">
                     <FaBookOpen />
                     Booking
@@ -92,11 +98,16 @@ const DashboardLayout = () => {
             ) : (
               <div className="flex flex-col gap-y-2">
                 <li>
-                  <NavLink to="/dashboard/secret">Home</NavLink>
+                  <NavLink to="/dashboard/userHome">Home</NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/bookedSession">
                     Booked Sessions
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/userPaymentHistory">
+                    Payment History
                   </NavLink>
                 </li>
               </div>

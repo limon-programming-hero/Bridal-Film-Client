@@ -1,4 +1,6 @@
 import image from "../../../assets/Images/Home/portfolio.jpg";
+import { motion } from "framer-motion";
+
 const HomeAbout = () => {
   const isBlack = false;
   const bgColor = isBlack ? "bg-black" : "bg-white";
@@ -9,10 +11,19 @@ const HomeAbout = () => {
     { number: 125, title: "Happy Clients" },
   ];
   return (
-    <div className={`hero my-10 w-full ${textColor} ${bgColor}`}>
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ type: "spring", duration: 0.4, bounce: 3 }}
+      viewport={{ once: true }}
+      className={`hero my-10 w-full ${textColor} ${bgColor}`}
+    >
       <div className="w-full hero-content flex-col mx-auto md:flex-row">
         <div className="w-full md:w-1/2">
-          <img src={image} className="rounded-full shadow-2xl" />
+          <img
+            src={image}
+            className="rounded-full hover:shadow-red-100 shadow-2xl"
+          />
         </div>
         <div className="w-full md:p-8 md:w-1/2">
           <h3 className="text-secondary text-xl font-semibold">About Me</h3>
@@ -36,7 +47,7 @@ const HomeAbout = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

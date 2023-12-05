@@ -23,7 +23,7 @@ const UseItems = () => {
       return await axios(
         `http://localhost:3000/items?email=${user?.email}`
       ).then((data) => {
-        console.log({ data });
+        // console.log({ data });
         // setItems(data.data);
         return data.data;
       });

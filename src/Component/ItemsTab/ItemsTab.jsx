@@ -5,6 +5,9 @@ import BlogItemCard from "../ItemCards/BlogItemCard";
 import { PropTypes } from "prop-types";
 import HomeItemCard from "../ItemCards/HomeItemCard";
 import Loader from "./../../Pages/Shared/Loader/Loader";
+import GalleryItemCard from "../ItemCards/GalleryItemCard";
+import { motion } from "framer-motion";
+
 const ItemsTab = ({ location }) => {
   let isHome = false,
     isGallery = false,
@@ -23,7 +26,7 @@ const ItemsTab = ({ location }) => {
     isBlog = false;
     isGallery = false;
   }
-  const { items, isItemsLoading, isItemsRefetch } = UseItems();
+  const { items, isItemsLoading = true, isItemsRefetch } = UseItems();
   const tabDetails = [
     { name: "All", data: items },
     {
@@ -54,6 +57,32 @@ const ItemsTab = ({ location }) => {
         !isItemsLoading && items?.filter((item) => item.category === "studio"),
     },
   ];
+  const divVariants = {
+    offscreen: {
+      y: 200,
+    },
+    onscreen: {
+      y: 0,
+      transition: {
+        type: "spring",
+        bounce: 0.4,
+        duration: 1.7,
+      },
+    },
+  };
+  const divVariantsGallery = {
+    offscreen: {
+      x: -500,
+    },
+    onscreen: {
+      x: 0,
+      transition: {
+        type: "spring",
+        bounce: 0.4,
+        duration: 0.8,
+      },
+    },
+  };
   return (
     <div className="my-8">
       <div className={isHome ? "" : "mt-24"}>
@@ -88,12 +117,17 @@ const ItemsTab = ({ location }) => {
           </TabList>
         </div>
         {/* this is tablist data or tab panel portion. tab list is dynamic here*/}
+        {isItemsLoading && <Loader></Loader>}
         {tabDetails?.map((tabDetail, index) => (
           <TabPanel key={index}>
-            {isItemsLoading && <Loader></Loader>}
             {/* if it is called from blog page then it will show like this */}
             {!isItemsLoading && isBlog && (
-              <div className="w-full gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              <motion.div
+                initial="offscreen"
+                whileInView={"onscreen"}
+                variants={divVariants}
+                className="w-full gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+              >
                 {tabDetail.data?.map((singleData, index) => (
                   <BlogItemCard
                     key={index}
@@ -101,32 +135,41 @@ const ItemsTab = ({ location }) => {
                     data={singleData}
                   ></BlogItemCard>
                 ))}
-              </div>
+              </motion.div>
             )}
             {/* if it is called from home page then it will show like this */}
             {!isItemsLoading && isHome && (
-              <div className="w-full grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+              <motion.div
+                initial={"offscreen"}
+                whileInView={"onscreen"}
+                variants={divVariants}
+                viewport={{ once: true }}
+                className="w-full grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6"
+              >
                 {tabDetail.data?.map((singleData, index) => (
                   <HomeItemCard
                     key={index}
                     index={index}
-                    isHome={true}
                     data={singleData}
                   ></HomeItemCard>
                 ))}
-              </div>
+              </motion.div>
             )}
             {/* if it is called from gallery page then it will show like this */}
             {!isItemsLoading && isGallery && (
-              <div className="w-full gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              <motion.div
+                initial={"offscreen"}
+                whileInView={"onscreen"}
+                variants={divVariantsGallery}
+                className="w-full gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+              >
                 {tabDetail.data?.map((singleData, index) => (
-                  <HomeItemCard
+                  <GalleryItemCard
                     key={index}
-                    isHome={false}
                     data={singleData}
-                  ></HomeItemCard>
+                  ></GalleryItemCard>
                 ))}
-              </div>
+              </motion.div>
             )}
           </TabPanel>
         ))}

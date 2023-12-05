@@ -1,4 +1,5 @@
 import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ContactPage = () => {
   return (
@@ -19,12 +20,9 @@ const ContactPage = () => {
             <p>info@bridalfilm@gmail.com</p>
           </div>
         </div>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-8"
-          //todo: onClick={handleBookNow}
-        >
-          Book Now
-        </button>
+        <Link to="/shop" className="btn btn-secondary btn-outline my-8">
+          <span className="hover:text-white">Book Now</span>
+        </Link>
       </div>
     </div>
   );

@@ -1,9 +1,11 @@
 import { PropTypes } from "prop-types";
+import { motion } from "framer-motion";
+import rowAnimation from "../../Pages/Shared/Animation/rowAnimation";
 const ShowPayment = ({ payments }) => {
   console.log(payments);
   return (
     <div>
-      <div className="overflow-x-auto mx-auto text-xl">
+      <div className="mx-auto text-xl">
         <h3 className="text-4xl text-secondary font-semibold text-center mb-5">
           Payment History
         </h3>
@@ -19,9 +21,16 @@ const ShowPayment = ({ payments }) => {
           </thead>
           <tbody>
             {/* rows */}
-            {payments.map(
+            {payments?.map(
               ({ email, name, price, items, transactionId }, index) => (
-                <tr key={index}>
+                <motion.tr
+                  initial={"initial"}
+                  animate={"animate"}
+                  custom={index}
+                  key={index}
+                  viewport={{ once: true }}
+                  variants={rowAnimation}
+                >
                   <td>
                     <div className="flex flex-col items-center space-x-3">
                       <div>
@@ -46,7 +55,7 @@ const ShowPayment = ({ payments }) => {
                   </td>
                   <td>{transactionId}</td>
                   <td>${price}</td>
-                </tr>
+                </motion.tr>
               )
             )}
           </tbody>

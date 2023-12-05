@@ -59,7 +59,7 @@ const ShopModal = ({ session }) => {
               <h4 className="font-semibold text-lg">Features:</h4>
               {features.map((feature, i) => (
                 <li key={i}>
-                  <p className="text-sm">- {feature}</p>
+                  <p className="text-sm my-2">- {feature}</p>
                 </li>
               ))}
             </ul>
@@ -69,6 +69,7 @@ const ShopModal = ({ session }) => {
                 defaultMonth={defaultMonth}
                 fromMonth={defaultMonth}
                 mode="single"
+                disabled={[{ to: defaultMonth }]}
                 selected={selected}
                 onSelect={setSelected}
                 footer={footer}

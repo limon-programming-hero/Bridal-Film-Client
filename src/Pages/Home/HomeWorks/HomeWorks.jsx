@@ -5,6 +5,7 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { FreeMode, Autoplay, Pagination } from "swiper/modules";
 
+import { motion } from "framer-motion";
 import image1 from "../../../assets/Images/Home/Works/1.jpg";
 import image2 from "../../../assets/Images/Home/Works/2.jpg";
 import image3 from "../../../assets/Images/Home/Works/3.jpg";
@@ -29,7 +30,12 @@ const HomeWorks = () => {
     image9,
   ];
   return (
-    <div className="relative">
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ type: "spring", bounce: 4, duration: 0.3 }}
+      className="relative"
+    >
       <div className="px-5">
         <button className="text-white btn btn-secondary rounded-none -mx-14 absolute top-32 left-1/2 z-10">
           <BsInstagram></BsInstagram> Follow Me
@@ -58,7 +64,7 @@ const HomeWorks = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </div>
+    </motion.div>
   );
 };
 

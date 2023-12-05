@@ -2,9 +2,9 @@ import { PropTypes } from "prop-types";
 import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
 import UseAuth from "../../Hooks/UseAuth";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import UploadImage from "../../Pages/Shared/UploadImage/UploadImage";
 
 const SessionAddUpdate = ({ session }) => {
   const navigate = useNavigate();
@@ -18,24 +18,11 @@ const SessionAddUpdate = ({ session }) => {
     formState: { errors },
   } = useForm();
 
-  //imgbb link with api key
-  const imageLink = `https://api.imgbb.com/1/upload?key=${
-    import.meta.env.VITE_ImageBB_api_key
-  }`;
-  // image uploading to imgbb and getting display_url
-  const UploadImgHandler = async (imageFile) => {
-    const formData = new FormData();
-    formData.append("image", imageFile[0]);
-    const imageData = await axios
-      .post(imageLink, formData)
-      .then((res) => res?.data?.data);
-    return imageData;
-  };
   const onSubmit = async (data) => {
     console.log(data);
     const { sessionType, price, features, image } = data;
 
-    const imageData = image.length && (await UploadImgHandler(image));
+    const imageData = image.length && (await UploadImage(image));
     const featureArray = features.split(",").filter(Boolean);
     const sessionData = {
       sessionType,

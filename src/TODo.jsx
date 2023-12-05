@@ -13,17 +13,15 @@
 // add session [done]
 // add user booking on session [done]
 // add adminRoute in frontend [done]
-// add verifyAdmin in backend [todo]
+// add verifyAdmin in backend [done]
 // add calender/date before booking item [done]
 //
 // make item list or panel dynamic [todo:future]
 // add booking section [done]
 // add user booking on session delete and send a delete message [done]
 // add payment method, get all payment and get payment history [done]
-// add get payment history for user[todo]
-// send request to add self picture to public section -- item post [todo]
-// send request to update self picture from public section -- item update [todo]
-// send request to delete self picture from public section -- item delete [todo]
+// add get payment history for user[done]
+// add and update item [done] ---- check
 // user dashboard -- profile, payment, request to shared blogs, likes blogs, commented blogs [todo]
 // admin dashboard --permits to post user's blog, delete user blog from items, make admin, delete user  [todo]
 // add helmet for dynamic title

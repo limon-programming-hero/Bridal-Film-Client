@@ -5,6 +5,8 @@ import UseAxiosSecure from "../../../../Hooks/UseAxiosSecure";
 import { useState } from "react";
 import { ProgressBar } from "react-loader-spinner";
 import UseAuth from "../../../../Hooks/UseAuth";
+import { motion } from "framer-motion";
+import rowAnimation from "../../../Shared/Animation/rowAnimation";
 
 const ManageUsers = () => {
   const { user, loading } = UseAuth();
@@ -45,7 +47,7 @@ const ManageUsers = () => {
 
   return (
     <div className="mx-auto">
-      <div className="overflow-x-auto text-xl">
+      <div className="w-full text-xl">
         <h3 className="text-2xl font-semibold my-8">
           Total User: {users.length}
         </h3>
@@ -65,8 +67,15 @@ const ManageUsers = () => {
           <tbody>
             {/* rows */}
             {!isUsersLoading &&
-              users.map((user, index) => (
-                <tr key={index}>
+              users?.map((user, index) => (
+                <motion.tr
+                  initial={"initial"}
+                  animate={"animate"}
+                  custom={index}
+                  key={index}
+                  viewport={{ once: true }}
+                  variants={rowAnimation}
+                >
                   <td>
                     <div className="flex items-center space-x-3">
                       <div className="avatar">
@@ -124,7 +133,7 @@ const ManageUsers = () => {
                       </button>
                     )}
                   </td>
-                </tr>
+                </motion.tr>
               ))}
           </tbody>
         </table>

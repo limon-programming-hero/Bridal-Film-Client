@@ -4,6 +4,10 @@ import { useState } from "react";
 import UseAxiosSecure from "../../../../Hooks/UseAxiosSecure";
 import UseAuth from "../../../../Hooks/UseAuth";
 import { ProgressBar } from "react-loader-spinner";
+import { Link } from "react-router-dom";
+import { MdEdit } from "react-icons/md";
+import { motion } from "framer-motion";
+import rowAnimation from "../../../Shared/Animation/rowAnimation";
 
 const ManageItems = () => {
   const { user, loading } = UseAuth();
@@ -28,7 +32,7 @@ const ManageItems = () => {
       <h3 className="text-4xl text-secondary font-semibold text-center mb-5">
         Manage All Items
       </h3>
-      <div className="overflow-x-auto">
+      <div>
         <table className="table">
           {/* head */}
           <thead>
@@ -38,6 +42,7 @@ const ManageItems = () => {
               <th>Category</th>
               <th>Likes</th>
               <th>Shared</th>
+              <th>Edit</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -45,7 +50,14 @@ const ManageItems = () => {
             {/* row 1 */}
             {!isItemsLoading &&
               items.map((item, index) => (
-                <tr key={index}>
+                <motion.tr
+                  initial={"initial"}
+                  animate={"animate"}
+                  custom={index}
+                  key={index}
+                  viewport={{ once: true }}
+                  variants={rowAnimation}
+                >
                   <td>
                     <div className="flex items-center space-x-3">
                       <div className="avatar">
@@ -70,7 +82,15 @@ const ManageItems = () => {
                   <td className="text-xs">
                     {item?.sharedEmail ? item?.sharedEmail : "Admin"}
                   </td>
-                  <th>
+                  <td>
+                    <Link
+                      className="btn btn-ghost"
+                      to={`/dashboard/updateItem/${item?._id}`}
+                    >
+                      <MdEdit />
+                    </Link>
+                  </td>
+                  <td>
                     {localLoading ? ( //if delete promise is loading
                       <ProgressBar
                         height="60"
@@ -89,8 +109,8 @@ const ManageItems = () => {
                         <AiFillDelete />
                       </button>
                     )}
-                  </th>
-                </tr>
+                  </td>
+                </motion.tr>
               ))}
           </tbody>
         </table>

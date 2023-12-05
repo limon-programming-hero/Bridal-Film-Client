@@ -47,7 +47,7 @@ const Navbar = () => {
       </li>
       {user && !loading && (
         <li className="relative">
-          <NavLink className="focus:glass" to="/dashboard">
+          <NavLink className="focus:glass" to="/dashboard/bookedSession">
             <span className="absolute font-bold text-secondary left-2 top-3">
               {isBookingLoading ? 0 : bookingItems?.length}
             </span>

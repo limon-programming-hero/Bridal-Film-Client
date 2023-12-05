@@ -14,7 +14,7 @@ const BlogItemCard = ({ data, refetch }) => {
         email: user?.email,
       };
       axiosSecure
-        .patch(`http://localhost:3000/items/${data?._id}`, handlerData)
+        .patch(`http://localhost:3000/item/like/${data?._id}`, handlerData)
         .then(async (res) => {
           if (!data?.isLiked) {
             const postData = { email: user?.email, itemId: data?._id };
