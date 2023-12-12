@@ -6,7 +6,9 @@ const AllPayments = () => {
   //   console.log({ payments });
   return (
     <div className="mx-auto">
-      {!isPaymentLoading && <ShowPayment payments={payments}></ShowPayment>}
+      {!isPaymentLoading && payments && (
+        <ShowPayment payments={payments}></ShowPayment>
+      )}
     </div>
   );
 };

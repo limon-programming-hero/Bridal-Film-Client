@@ -9,14 +9,21 @@ const ManageBooking = () => {
   const {
     data: allBooking,
     isLoading: isBookingLoading,
-    // refetch,
+    refetch,
   } = useQuery({
     queryKey: ["booking"],
     queryFn: async () => {
-      const res = await axiosSecure(`/booking`);
+      const res = await axiosSecure.get(`/booking`);
       return res?.data;
     },
   });
+  const changeStatusHandler = async (id) => {
+    const data = { status: "done" };
+    const res = await axiosSecure.patch(`/booking/${id}`, {
+      bookingData: data,
+    });
+    if (res?.data?.acknowledged) refetch();
+  };
   return (
     <div className="mx-auto">
       {isBookingLoading && <Loader className="mx-auto"></Loader>}
@@ -37,12 +44,16 @@ const ManageBooking = () => {
                   <th>User</th>
                   <th>Date</th>
                   <th>Price</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
                 {/* row 1 */}
                 {allBooking.map(
-                  ({ sessionType, name, email, date, price }, index) => (
+                  (
+                    { _id, sessionType, name, email, date, price, status },
+                    index
+                  ) => (
                     <motion.tr
                       initial={"initial"}
                       animate={"animate"}
@@ -51,7 +62,9 @@ const ManageBooking = () => {
                       viewport={{ once: true }}
                       variants={rowAnimation}
                     >
-                      <td className="max-w-[250px] text-xs">{sessionType}</td>
+                      <td className="max-w-[250px] font-semibold text-xs">
+                        {sessionType}
+                      </td>
                       <td>
                         <div>
                           <div className="font-semibold">{name}</div>
@@ -63,7 +76,19 @@ const ManageBooking = () => {
                           <div>{date}</div>
                         </div>
                       </td>
-                      <td>{price}</td>
+                      <td className="text-right">$ {price}</td>
+                      <td className="text-primary">
+                        {status === "done" ? (
+                          <span className="capitalize">{status}</span>
+                        ) : (
+                          <button
+                            onClick={() => changeStatusHandler(_id)}
+                            className="btn text-sm text-slate-600 btn-ghost"
+                          >
+                            Pending
+                          </button>
+                        )}
+                      </td>
                     </motion.tr>
                   )
                 )}

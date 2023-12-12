@@ -3,8 +3,6 @@
 // add gallery [todo]
 // add blog [done]
 // add about [done]
-// add authentication--- firebase [done till now]
-// add forget password [todo]
 // add axiosSecure using axios interceptors [done]
 // add authorization--- jwt [done]
 // add jwt Verification [done]
@@ -24,5 +22,7 @@
 // add and update item [done] ---- check
 // user dashboard -- profile, payment, request to shared blogs, likes blogs, commented blogs [todo]
 // admin dashboard --permits to post user's blog, delete user blog from items, make admin, delete user  [todo]
-// add helmet for dynamic title
+// add helmet for dynamic title [todo]
+// add authentication--- firebase [done till now]
+// add forget password [todo]
 // add animation to all pages [todo]

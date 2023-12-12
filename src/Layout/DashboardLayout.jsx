@@ -2,7 +2,11 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { AiFillHome, AiOutlineUsergroupDelete } from "react-icons/ai";
 import { IoIosAddCircle } from "react-icons/io";
-import { BsFillCartCheckFill, BsFillTelephoneFill } from "react-icons/bs";
+import {
+  BsFillCartCheckFill,
+  BsFillTelephoneFill,
+  BsWallet,
+} from "react-icons/bs";
 import { FaBookOpen, FaHome, FaShoppingCart } from "react-icons/fa";
 import UseIsAdmin from "./../Hooks/UseIsAdmin";
 const DashboardLayout = () => {
@@ -91,7 +95,7 @@ const DashboardLayout = () => {
                 </li>
                 <li>
                   <NavLink to="/dashboard/allPayment">
-                    <IoIosAddCircle /> Payments
+                    <BsWallet /> Payments
                   </NavLink>
                 </li>
               </div>
