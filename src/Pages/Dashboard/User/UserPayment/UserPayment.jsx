@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import UseAuth from "../../../../Hooks/UseAuth";
 import UseAxiosSecure from "../../../../Hooks/UseAxiosSecure";
 import ShowPayment from "../../../../Component/ShowPayment/ShowPayment";
+import { Helmet } from "react-helmet";
 
 const UserPayment = () => {
   const { user, loading } = UseAuth();
@@ -16,6 +17,9 @@ const UserPayment = () => {
   });
   return (
     <div className="mx-auto">
+      <Helmet>
+        <title>{user?.displayName} | Payment History | Photography</title>
+      </Helmet>
       {!isLoading && <ShowPayment payments={data}></ShowPayment>}
     </div>
   );

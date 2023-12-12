@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { LineWave } from "react-loader-spinner";
+import { Helmet } from "react-helmet";
 
 const SignUp = () => {
   const [localLoading, setLocalLoading] = useState(false);
@@ -78,6 +79,9 @@ const SignUp = () => {
 
   return (
     <div className="hero min-h-screen">
+      <Helmet>
+        <title>Sign Up | Photography</title>
+      </Helmet>
       <div className="hero-content flex-col mx-14 gap-4 text-black md:flex-row">
         <div className="text-center w-full md:w-1/2 md:text-left">
           <h1 className="text-5xl font-bold">Sign Up now!</h1>

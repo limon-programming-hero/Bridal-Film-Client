@@ -7,6 +7,7 @@ import { ProgressBar } from "react-loader-spinner";
 import UseAuth from "../../../../Hooks/UseAuth";
 import { motion } from "framer-motion";
 import rowAnimation from "../../../Shared/Animation/rowAnimation";
+import { Helmet } from "react-helmet";
 
 const ManageUsers = () => {
   const { user, loading } = UseAuth();
@@ -47,6 +48,9 @@ const ManageUsers = () => {
 
   return (
     <div className="mx-auto">
+      <Helmet>
+        <title>Manage Users | Photography</title>
+      </Helmet>
       <div className="w-full text-xl">
         <h3 className="text-2xl font-semibold my-8">
           Total User: {users.length}

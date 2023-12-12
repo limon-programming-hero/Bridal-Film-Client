@@ -1,9 +1,13 @@
+import { Helmet } from "react-helmet";
 import { FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const ContactPage = () => {
   return (
     <div className="mx-auto">
+      <Helmet>
+        <title>Contact Page | Photography</title>
+      </Helmet>
       <div className="flex flex-col items-center justify-center h-full">
         <h1 className="text-3xl font-bold mb-4">Contact Us</h1>
         <div className="flex flex-col items-center space-y-4">

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import ShowPayment from "../../../../Component/ShowPayment/ShowPayment";
 import UsePayments from "../../../../Hooks/UsePayments";
 
@@ -6,6 +7,9 @@ const AllPayments = () => {
   //   console.log({ payments });
   return (
     <div className="mx-auto">
+      <Helmet>
+        <title>Payment History | Photography</title>
+      </Helmet>
       {!isPaymentLoading && payments && (
         <ShowPayment payments={payments}></ShowPayment>
       )}

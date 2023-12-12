@@ -4,11 +4,15 @@ import UseSessions from "./../../../../Hooks/UseSessions";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { motion } from "framer-motion";
 import rowAnimation from "../../../Shared/Animation/rowAnimation";
+import { Helmet } from "react-helmet";
 
 const Sessions = () => {
   const { sessions, isSessionLoading } = UseSessions();
   return (
     <div className="mx-auto">
+      <Helmet>
+        <title>Sessions | Photography</title>
+      </Helmet>
       {isSessionLoading && <Loader className="mx-auto"></Loader>}
       {sessions && (
         <>

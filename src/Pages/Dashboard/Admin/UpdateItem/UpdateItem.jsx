@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import ItemAddUpdate from "../../../../Component/ItemAddUpdate/ItemAddUpdate";
 import UseItems from "../../../../Hooks/UseItems";
+import { Helmet } from "react-helmet";
 
 const UpdateItem = () => {
   const { id } = useParams();
@@ -10,6 +11,9 @@ const UpdateItem = () => {
   // console.log(item);
   return (
     <div className="w-full">
+      <Helmet>
+        <title>Update Item | Photography</title>
+      </Helmet>
       <div className="flex my-5 gap-y-2 flex-col">
         <h3 className="text-xl font-semibold text-center">
           Want to Update a new Item?

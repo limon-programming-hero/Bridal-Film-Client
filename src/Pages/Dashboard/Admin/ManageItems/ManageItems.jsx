@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { MdEdit } from "react-icons/md";
 import { motion } from "framer-motion";
 import rowAnimation from "../../../Shared/Animation/rowAnimation";
+import { Helmet } from "react-helmet";
 
 const ManageItems = () => {
   const { user, loading } = UseAuth();
@@ -26,6 +27,9 @@ const ManageItems = () => {
   };
   return (
     <div className="mx-auto">
+      <Helmet>
+        <title>Manage Items | Photography</title>
+      </Helmet>
       <h3 className="text-2xl font-semibold my-8">
         Total item: {items.length}
       </h3>

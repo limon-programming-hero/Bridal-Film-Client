@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import ItemsTab from "../../../Component/ItemsTab/ItemsTab";
 import HomeAbout from "../HomeAbout/HomeAbout";
 import HomeCarousel from "../HomeCarousel/HomeCarousel";
@@ -6,6 +7,9 @@ import HomeWorks from "../HomeWorks/HomeWorks";
 const Home = () => {
   return (
     <div>
+      <Helmet>
+        <title>Home | Photography</title>
+      </Helmet>
       <HomeCarousel></HomeCarousel>
       <HomeAbout></HomeAbout>
       <HomeWorks></HomeWorks>

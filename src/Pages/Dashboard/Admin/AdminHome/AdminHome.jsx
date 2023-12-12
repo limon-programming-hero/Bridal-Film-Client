@@ -19,6 +19,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { Helmet } from "react-helmet";
 
 const AdminHome = () => {
   const { user, loading } = UseAuth();
@@ -123,6 +124,9 @@ const AdminHome = () => {
   };
   return (
     <div className="w-full mx-auto my-10">
+      <Helmet>
+        <title>Admin Home | Photography</title>
+      </Helmet>
       {!isLoading ? (
         <div className="flex flex-col items-center gap-y-14">
           <h3 className="text-3xl font-bold text-left">

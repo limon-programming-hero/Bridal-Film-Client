@@ -5,6 +5,7 @@ import { MdPictureInPicture } from "react-icons/md";
 import UseAuth from "../../../../Hooks/UseAuth";
 import UseAxiosSecure from "../../../../Hooks/UseAxiosSecure";
 import Loader from "../../../Shared/Loader/Loader";
+import { Helmet } from "react-helmet";
 
 const UserHome = () => {
   const { user, loading } = UseAuth();
@@ -21,6 +22,9 @@ const UserHome = () => {
 
   return (
     <div className="w-full mx-auto my-10">
+      <Helmet>
+        <title>{user?.displayName} Home | Photography</title>
+      </Helmet>
       {!isLoading ? (
         <div className="flex flex-col items-center gap-y-14">
           <h3 className="text-3xl font-bold text-left">

@@ -7,6 +7,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { useState } from "react";
 import { LineWave } from "react-loader-spinner";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const UserBookingItems = () => {
   const { user, loading } = UseAuth();
@@ -38,6 +39,9 @@ const UserBookingItems = () => {
   };
   return (
     <div className="mx-auto">
+      <Helmet>
+        <title>Booking Items | Photography</title>
+      </Helmet>
       {isBookingLoading && <Loader className="mx-auto"></Loader>}
       {localLoader && (
         <div className="flex justify-center">

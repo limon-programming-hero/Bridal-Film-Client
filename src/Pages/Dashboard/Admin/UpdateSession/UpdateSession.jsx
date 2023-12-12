@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import SessionAddUpdate from "../../../../Component/SessionAddUpdate/SessionAddUpdate";
 import UseSessions from "../../../../Hooks/UseSessions";
+import { Helmet } from "react-helmet";
 
 const UpdateSession = () => {
   const { id } = useParams();
@@ -10,6 +11,9 @@ const UpdateSession = () => {
   console.log(item);
   return (
     <div className="w-full">
+      <Helmet>
+        <title>Update Session | Photography</title>
+      </Helmet>
       <SessionAddUpdate session={item}></SessionAddUpdate>
     </div>
   );

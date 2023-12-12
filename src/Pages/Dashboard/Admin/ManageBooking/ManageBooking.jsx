@@ -3,6 +3,7 @@ import UseAxiosSecure from "../../../../Hooks/UseAxiosSecure";
 import Loader from "./../../../Shared/Loader/Loader";
 import { motion } from "framer-motion";
 import rowAnimation from "../../../Shared/Animation/rowAnimation";
+import { Helmet } from "react-helmet";
 
 const ManageBooking = () => {
   const [axiosSecure] = UseAxiosSecure();
@@ -26,6 +27,9 @@ const ManageBooking = () => {
   };
   return (
     <div className="mx-auto">
+      <Helmet>
+        <title>Manage Booking | Photography</title>
+      </Helmet>
       {isBookingLoading && <Loader className="mx-auto"></Loader>}
       {allBooking && (
         <>

@@ -6,6 +6,7 @@ import { AiFillGoogleCircle } from "react-icons/ai";
 import axios from "axios";
 import { LineWave } from "react-loader-spinner";
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 
 const LogIn = () => {
   const [localLoading, setLocalLoading] = useState(false);
@@ -94,6 +95,9 @@ const LogIn = () => {
 
   return (
     <div className="hero min-h-screen mt-10">
+      <Helmet>
+        <title>Log In | Photography</title>
+      </Helmet>
       <div className="hero-content flex flex-col mx-14 gap-x-5 text-black md:flex-row">
         <div className="text-center w-full md:w-1/2 md:text-left">
           <h1 className="text-5xl font-bold">Login now!</h1>
