@@ -52,7 +52,7 @@ const AuthContextProvider = ({ children }) => {
       setUser(currentUser);
       if (currentUser) {
         axios
-          .post("http://localhost:3000/jwt-signIn", {
+          .post("https://bridal-film-server.vercel.app/jwt-signIn", {
             email: currentUser?.email,
           })
           .then((res) => {

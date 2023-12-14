@@ -9,7 +9,9 @@ const UseSessions = () => {
   } = useQuery({
     queryKey: ["session"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:3000/sessions");
+      const res = await axios.get(
+        "https://bridal-film-server.vercel.app/sessions"
+      );
       return res?.data;
     },
   });

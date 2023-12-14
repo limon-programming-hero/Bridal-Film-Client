@@ -25,7 +25,7 @@ const LogIn = () => {
         const user = result.user;
         console.log(user);
         const isUser = await axios.get(
-          `http://localhost:3000/isUser?email=${user?.email}`
+          `https://bridal-film-server.vercel.app/isUser?email=${user?.email}`
         );
         console.log({ isUser: isUser.data });
         if (!isUser.data) {
@@ -35,7 +35,9 @@ const LogIn = () => {
             image: user?.photoURL,
           };
           axios
-            .post("http://localhost:3000/users", { userDetails })
+            .post("https://bridal-film-server.vercel.app/users", {
+              userDetails,
+            })
             .then((res) => {
               console.log({ userToDb: res?.data });
               navigate(path);
@@ -67,18 +69,20 @@ const LogIn = () => {
         const user = userCredential.user;
         console.log(user);
         const email = user.email;
-        axios.post("http://localhost:3000/jwt-signIn", email).then((res) => {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Signed In successfully!",
-            showConfirmButton: false,
-            timer: 1500,
+        axios
+          .post("https://bridal-film-server.vercel.app/jwt-signIn", email)
+          .then((res) => {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Signed In successfully!",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            localStorage.setItem("jwt-token", res?.data);
+            setLocalLoading(false);
+            navigate(path);
           });
-          localStorage.setItem("jwt-token", res?.data);
-          setLocalLoading(false);
-          navigate(path);
-        });
       })
       .catch((error) => {
         const errorMessage = error.message;

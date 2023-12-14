@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 // import Swal from "sweetalert2";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://bridal-film-server.vercel.app",
 });
 
 const UseAxiosSecure = () => {

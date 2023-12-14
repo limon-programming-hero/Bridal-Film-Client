@@ -6,11 +6,11 @@ const UsePayments = () => {
   const { data: payments = [], isLoading: isPaymentLoading } = useQuery({
     queryKey: ["items"],
     queryFn: async () => {
-      return await axiosSecure(`http://localhost:3000/payments`).then(
-        (data) => {
-          return data?.data;
-        }
-      );
+      return await axiosSecure(
+        `https://bridal-film-server.vercel.app/payments`
+      ).then((data) => {
+        return data?.data;
+      });
     },
   });
   return { payments, isPaymentLoading };

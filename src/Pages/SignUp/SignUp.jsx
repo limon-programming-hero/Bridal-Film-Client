@@ -56,7 +56,9 @@ const SignUp = () => {
           };
           // adding user to database
           axios
-            .post("http://localhost:3000/users", { userDetails })
+            .post("https://bridal-film-server.vercel.app/users", {
+              userDetails,
+            })
             .then((res) => {
               console.log({ userToDb: res?.data });
               setLocalLoading(false);

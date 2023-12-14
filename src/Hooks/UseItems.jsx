@@ -21,7 +21,7 @@ const UseItems = () => {
     enabled: !loading,
     queryFn: async () => {
       return await axios(
-        `http://localhost:3000/items?email=${user?.email}`
+        `https://bridal-film-server.vercel.app/items?email=${user?.email}`
       ).then((data) => {
         // console.log({ data });
         // setItems(data.data);
