@@ -28,7 +28,7 @@ const ManageItems = () => {
   return (
     <div className="mx-auto">
       <Helmet>
-        <title>Manage Items | Photography</title>
+        <title>Manage Items | Bridal Film</title>
       </Helmet>
       <h3 className="text-2xl font-semibold my-8">
         Total item: {items.length}

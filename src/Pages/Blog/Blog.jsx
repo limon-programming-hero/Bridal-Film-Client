@@ -5,7 +5,7 @@ const Blog = () => {
   return (
     <div className="min-h-screen">
       <Helmet>
-        <title>Blog | Photography</title>
+        <title>Blog | Bridal Film</title>
       </Helmet>
       <ItemsTab location={"blog"}></ItemsTab>
     </div>

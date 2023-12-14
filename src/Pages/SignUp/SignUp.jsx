@@ -82,7 +82,7 @@ const SignUp = () => {
   return (
     <div className="hero min-h-screen">
       <Helmet>
-        <title>Sign Up | Photography</title>
+        <title>Sign Up | Bridal Film</title>
       </Helmet>
       <div className="hero-content flex-col mx-14 gap-4 text-black md:flex-row">
         <div className="text-center w-full md:w-1/2 md:text-left">

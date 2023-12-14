@@ -49,7 +49,7 @@ const ManageUsers = () => {
   return (
     <div className="mx-auto">
       <Helmet>
-        <title>Manage Users | Photography</title>
+        <title>Manage Users | Bridal Film</title>
       </Helmet>
       <div className="w-full text-xl">
         <h3 className="text-2xl font-semibold my-8">

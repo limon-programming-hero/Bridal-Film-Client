@@ -28,7 +28,7 @@ const ManageBooking = () => {
   return (
     <div className="mx-auto">
       <Helmet>
-        <title>Manage Booking | Photography</title>
+        <title>Manage Booking | Bridal Film</title>
       </Helmet>
       {isBookingLoading && <Loader className="mx-auto"></Loader>}
       {allBooking && (

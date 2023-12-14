@@ -5,7 +5,7 @@ const Error404 = () => {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
       <Helmet>
-        <title>Error 404 | Photography</title>
+        <title>Error 404 | Bridal Film</title>
       </Helmet>
       <h1 className="text-4xl font-bold mb-4">404 - Page Not Found</h1>
       <p className="text-lg mb-8">

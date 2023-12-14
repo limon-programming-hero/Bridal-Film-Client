@@ -6,7 +6,7 @@ const ContactPage = () => {
   return (
     <div className="mx-auto">
       <Helmet>
-        <title>Contact Page | Photography</title>
+        <title>Contact Page | Bridal Film</title>
       </Helmet>
       <div className="flex flex-col items-center justify-center h-full">
         <h1 className="text-3xl font-bold mb-4">Contact Us</h1>

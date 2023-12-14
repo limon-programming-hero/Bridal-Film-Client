@@ -12,7 +12,7 @@ const UpdateSession = () => {
   return (
     <div className="w-full">
       <Helmet>
-        <title>Update Session | Photography</title>
+        <title>Update Session | Bridal Film</title>
       </Helmet>
       <SessionAddUpdate session={item}></SessionAddUpdate>
     </div>

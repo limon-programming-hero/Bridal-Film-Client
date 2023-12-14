@@ -5,7 +5,7 @@ const AddItems = () => {
   return (
     <div className="w-full">
       <Helmet>
-        <title>Add Item | Photography</title>
+        <title>Add Item | Bridal Film</title>
       </Helmet>
       <ItemAddUpdate></ItemAddUpdate>
     </div>

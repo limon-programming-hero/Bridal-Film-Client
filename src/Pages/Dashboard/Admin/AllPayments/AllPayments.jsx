@@ -8,7 +8,7 @@ const AllPayments = () => {
   return (
     <div className="mx-auto">
       <Helmet>
-        <title>Payment History | Photography</title>
+        <title>Payment History | Bridal Film</title>
       </Helmet>
       {!isPaymentLoading && payments && (
         <ShowPayment payments={payments}></ShowPayment>

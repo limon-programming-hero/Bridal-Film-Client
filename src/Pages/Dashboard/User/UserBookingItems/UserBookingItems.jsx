@@ -40,7 +40,7 @@ const UserBookingItems = () => {
   return (
     <div className="mx-auto">
       <Helmet>
-        <title>Booking Items | Photography</title>
+        <title>Booking Items | Bridal Film</title>
       </Helmet>
       {isBookingLoading && <Loader className="mx-auto"></Loader>}
       {localLoader && (

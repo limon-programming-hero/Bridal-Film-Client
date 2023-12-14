@@ -27,7 +27,7 @@ const Payment = () => {
   return (
     <div>
       <Helmet>
-        <title>Make Payment | Photography</title>
+        <title>Make Payment | Bridal Film</title>
       </Helmet>
       {!isBookingLoading && (
         <Elements stripe={stripePromise}>

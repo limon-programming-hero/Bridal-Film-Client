@@ -11,7 +11,7 @@ const Sessions = () => {
   return (
     <div className="mx-auto">
       <Helmet>
-        <title>Sessions | Photography</title>
+        <title>Sessions | Bridal Film</title>
       </Helmet>
       {isSessionLoading && <Loader className="mx-auto"></Loader>}
       {sessions && (

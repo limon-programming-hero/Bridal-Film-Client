@@ -5,7 +5,7 @@ const Gallery = () => {
   return (
     <div>
       <Helmet>
-        <title>Gallery | Photography</title>
+        <title>Gallery | Bridal Film</title>
       </Helmet>
       <ItemsTab location={"gallery"}></ItemsTab>
     </div>

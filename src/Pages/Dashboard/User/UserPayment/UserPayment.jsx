@@ -18,7 +18,7 @@ const UserPayment = () => {
   return (
     <div className="mx-auto">
       <Helmet>
-        <title>{user?.displayName} | Payment History | Photography</title>
+        <title>{user?.displayName} | Payment History | Bridal Film</title>
       </Helmet>
       {!isLoading && <ShowPayment payments={data}></ShowPayment>}
     </div>

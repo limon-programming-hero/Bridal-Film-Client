@@ -12,7 +12,7 @@ const UpdateItem = () => {
   return (
     <div className="w-full">
       <Helmet>
-        <title>Update Item | Photography</title>
+        <title>Update Item | Bridal Film</title>
       </Helmet>
       <div className="flex my-5 gap-y-2 flex-col">
         <h3 className="text-xl font-semibold text-center">

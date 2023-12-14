@@ -5,7 +5,7 @@ const AddSession = () => {
   return (
     <div className="w-full">
       <Helmet>
-        <title>Add Session | Photography</title>
+        <title>Add Session | Bridal Film</title>
       </Helmet>
       <SessionAddUpdate></SessionAddUpdate>
     </div>

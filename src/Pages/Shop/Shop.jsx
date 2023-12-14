@@ -8,7 +8,7 @@ const Shop = () => {
   return (
     <div className="mt-24">
       <Helmet>
-        <title>Sessions | Photography</title>
+        <title>Sessions | Bridal Film</title>
       </Helmet>
       <h3 className="text-center text-3xl my-5 font-semibold">
         Want to have a Photography Session! <br />

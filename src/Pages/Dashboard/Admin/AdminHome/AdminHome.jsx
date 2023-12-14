@@ -125,7 +125,7 @@ const AdminHome = () => {
   return (
     <div className="w-full mx-auto my-10">
       <Helmet>
-        <title>Admin Home | Photography</title>
+        <title>Admin Home | Bridal Film</title>
       </Helmet>
       {!isLoading ? (
         <div className="flex flex-col items-center gap-y-14">

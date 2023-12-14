@@ -100,7 +100,7 @@ const LogIn = () => {
   return (
     <div className="hero min-h-screen mt-10">
       <Helmet>
-        <title>Log In | Photography</title>
+        <title>Log In | Bridal Film</title>
       </Helmet>
       <div className="hero-content flex flex-col mx-14 gap-x-5 text-black md:flex-row">
         <div className="text-center w-full md:w-1/2 md:text-left">

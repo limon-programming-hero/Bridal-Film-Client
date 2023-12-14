@@ -23,7 +23,7 @@ const UserHome = () => {
   return (
     <div className="w-full mx-auto my-10">
       <Helmet>
-        <title>{user?.displayName} Home | Photography</title>
+        <title>{user?.displayName} Home | Bridal Film</title>
       </Helmet>
       {!isLoading ? (
         <div className="flex flex-col items-center gap-y-14">
