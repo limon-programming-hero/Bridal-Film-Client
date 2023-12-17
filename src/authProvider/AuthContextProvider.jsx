@@ -58,9 +58,10 @@ const AuthContextProvider = ({ children }) => {
           .then((res) => {
             localStorage.setItem("jwt-token", res?.data);
             setLoading(false);
-            console.log({ email: currentUser?.email });
+            // console.log({ email: currentUser?.email });
           });
       } else {
+        setLoading(true);
         localStorage.removeItem("jwt-token");
       }
     });

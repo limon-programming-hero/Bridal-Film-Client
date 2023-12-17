@@ -6,7 +6,8 @@ import ShopModal from "./ShopModal";
 
 const ShopCard = ({ session }) => {
   const [toggleBtn, setToggleBtn] = useState(true);
-  const { _id, sessionType, price, features } = session;
+  const { sessionType, price, features } = session;
+  // console.log(session);
   return (
     <div
       className="hero rounded-br-lg h-[580px]"
@@ -25,7 +26,9 @@ const ShopCard = ({ session }) => {
 
             <button
               className="btn btn-outline btn-secondary mx-auto capitalize"
-              onClick={() => document.getElementById(`${_id}`).showModal()}
+              onClick={() =>
+                document.getElementById(`${session?._id}`).showModal()
+              }
             >
               <span className="text-white"> Book</span>
             </button>

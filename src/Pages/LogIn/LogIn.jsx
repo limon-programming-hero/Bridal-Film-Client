@@ -23,11 +23,11 @@ const LogIn = () => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         // const credential = GoogleAuthProvider.credentialFromResult(result);
         const user = result.user;
-        console.log(user);
+        // console.log(user);
         const isUser = await axios.get(
           `https://bridal-film-server.vercel.app/isUser?email=${user?.email}`
         );
-        console.log({ isUser: isUser.data });
+        // console.log({ isUser: isUser.data });
         if (!isUser.data) {
           const userDetails = {
             name: user?.displayName,
@@ -61,13 +61,13 @@ const LogIn = () => {
 
   const onSubmit = (data) => {
     setLocalLoading(true);
-    console.log(data);
+    // console.log(data);
     const { email, password } = data;
     LogInWithEmail(email, password)
       .then((userCredential) => {
         // Signed up
         const user = userCredential.user;
-        console.log(user);
+        // console.log(user);
         const email = user.email;
         axios
           .post("https://bridal-film-server.vercel.app/jwt-signIn", email)

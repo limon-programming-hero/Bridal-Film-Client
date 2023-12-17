@@ -19,7 +19,7 @@ const ItemAddUpdate = ({ item }) => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     const { title, category, body, image } = data;
 
     const imageData = image.length && (await UploadImage(image));
@@ -30,7 +30,7 @@ const ItemAddUpdate = ({ item }) => {
       body,
     };
 
-    console.log(itemData);
+    // console.log(itemData);
 
     const res =
       !loading &&
@@ -44,7 +44,7 @@ const ItemAddUpdate = ({ item }) => {
         : await axiosSecure.post(`/items?email=${user?.email}`, {
             itemData,
           }));
-    console.log(res?.data);
+    // console.log(res?.data);
     res?.data?.acknowledged &&
       Swal.fire({
         position: "top-end",

@@ -22,7 +22,7 @@ const UserBookingItems = () => {
   const [localLoader, setLocalLoader] = useState(false);
   const deleteBookingHandler = async (id) => {
     setLocalLoader(true);
-    console.log(id);
+    // console.log(id);
     const res =
       !loading &&
       (await axiosSecure.delete(`/booking/${id}?email=${user?.email}`));

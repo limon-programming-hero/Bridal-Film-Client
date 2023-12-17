@@ -4,7 +4,7 @@ import UseAuth from "./UseAuth";
 // import { useState } from "react";
 
 const UseItems = () => {
-  const { user, loading } = UseAuth();
+  const { user } = UseAuth();
   // const [items, setItems] = useState([]);
   // const fashionItems = items?.filter((item) => item.category === "fashion");
   // const lifestyleItems = items?.filter((item) => item.category === "lifestyle");
@@ -18,7 +18,6 @@ const UseItems = () => {
     refetch: isItemsRefetch,
   } = useQuery({
     queryKey: ["items"],
-    enabled: !loading,
     queryFn: async () => {
       return await axios(
         `https://bridal-film-server.vercel.app/items?email=${user?.email}`

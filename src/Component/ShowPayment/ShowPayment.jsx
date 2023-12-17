@@ -2,7 +2,7 @@ import { PropTypes } from "prop-types";
 import { motion } from "framer-motion";
 import rowAnimation from "../../Pages/Shared/Animation/rowAnimation";
 const ShowPayment = ({ payments }) => {
-  console.log(payments);
+  // console.log(payments);
   return (
     <div>
       <div className="mx-auto text-xl">

@@ -50,7 +50,7 @@ const CheckoutForm = ({ totalPrice, items }) => {
 
     if (error) {
       setCardError(error.message);
-      console.log("[error]", error);
+      // console.log("[error]", error);
     } else {
       setCardError("");
       console.log("[PaymentMethod]", paymentMethod);
@@ -67,7 +67,7 @@ const CheckoutForm = ({ totalPrice, items }) => {
       });
     if (confirmError) {
       setCardError(confirmError?.message);
-      console.log(confirmError);
+      // console.log(confirmError);
     }
     if (paymentIntent?.status === "succeeded") {
       setTransactionId(paymentIntent?.id);
@@ -78,7 +78,7 @@ const CheckoutForm = ({ totalPrice, items }) => {
         transactionId: paymentIntent?.id,
         items,
       };
-      console.log(paymentDetails);
+      // console.log(paymentDetails);
       const res = await axiosSecure.post("/payments", { data: paymentDetails });
       const deleteResponse =
         res?.data?.acknowledged &&
@@ -93,9 +93,9 @@ const CheckoutForm = ({ totalPrice, items }) => {
         });
         setProcessing(false);
       }
-      console.log(deleteResponse?.data);
+      // console.log(deleteResponse?.data);
     }
-    console.log({ paymentIntent }, { confirmError });
+    // console.log({ paymentIntent }, { confirmError });
   };
 
   return (

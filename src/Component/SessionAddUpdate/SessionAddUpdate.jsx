@@ -19,7 +19,7 @@ const SessionAddUpdate = ({ session }) => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     const { sessionType, price, features, image } = data;
 
     const imageData = image.length && (await UploadImage(image));

@@ -45,7 +45,7 @@ const SignUp = () => {
       .then((userCredential) => {
         // Signed up
         const user = userCredential.user;
-        console.log(user);
+        // console.log(user);
         // adding user name and profile picture
         addNameAndPhoto(name, imageData?.display_url).then(() => {
           // const email = user.email;

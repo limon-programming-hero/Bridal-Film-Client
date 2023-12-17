@@ -2,10 +2,12 @@ import PropTypes from "prop-types";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import UseAuth from "./../../Hooks/UseAuth";
 import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
+import { useNavigate } from "react-router-dom";
 
 const BlogItemCard = ({ data, refetch }) => {
   const [axiosSecure] = UseAxiosSecure();
   const { user, loading } = UseAuth();
+  const navigate = useNavigate();
 
   const likeHandler = () => {
     if (!loading) {
@@ -32,6 +34,8 @@ const BlogItemCard = ({ data, refetch }) => {
           refetch();
           console.log(res?.data);
         });
+    } else {
+      navigate("/login");
     }
   };
 
@@ -47,7 +51,7 @@ const BlogItemCard = ({ data, refetch }) => {
         <div className="card-actions justify-between">
           <button onClick={likeHandler}>
             <div className="badge cursor-pointer flex gap-2 badge-outline">
-              {data?.likes ? data.likes : "0"}
+              {data?.likes ? data.likes : 0}
               {data?.isLiked ? (
                 <span className="text-secondary">
                   <AiFillHeart />

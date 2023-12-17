@@ -6,6 +6,8 @@ import Swal from "sweetalert2";
 import UseBooking from "./../../../Hooks/UseBooking";
 const Navbar = () => {
   const { user, loading, logOut } = UseAuth();
+  const { bookingItems, isBookingLoading } = UseBooking();
+
   const handlerLogOut = () => {
     logOut()
       .then(() => {
@@ -22,7 +24,6 @@ const Navbar = () => {
         console.log(error);
       });
   };
-  const { bookingItems, isBookingLoading } = UseBooking();
   const list = (
     <div className="flex flex-col lg:flex-row gap-x-3">
       <li>

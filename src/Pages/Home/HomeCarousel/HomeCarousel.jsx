@@ -39,7 +39,7 @@ const HomeCarousel = () => {
       body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit Numquam quidem eveniet sed repudiandae quos animi",
     },
   ];
-  console.log(cardInfo[0].img);
+  // console.log(cardInfo[0].img);
 
   return (
     <Swiper

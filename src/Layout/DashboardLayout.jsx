@@ -11,9 +11,9 @@ import { FaBookOpen, FaHome, FaShoppingCart } from "react-icons/fa";
 import UseIsAdmin from "./../Hooks/UseIsAdmin";
 const DashboardLayout = () => {
   const { isAdmin, isAdminLoading } = UseIsAdmin();
-  console.log(!isAdminLoading && isAdmin);
+  // console.log(!isAdminLoading && isAdmin);
   return (
-    <div className="mx-auto max-w-[1280px]">
+    <div className="mx-auto max-w-[1180px]">
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-start m-10 justify-center">

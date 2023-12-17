@@ -5,6 +5,7 @@ import UseAuth from "./UseAuth";
 const UseBooking = () => {
   const [axiosSecure] = UseAxiosSecure();
   const { user, loading } = UseAuth();
+  // console.log(loading);
   const {
     data: bookingItems,
     isLoading: isBookingLoading,
