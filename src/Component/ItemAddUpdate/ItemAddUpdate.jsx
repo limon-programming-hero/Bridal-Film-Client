@@ -6,7 +6,7 @@ import UploadImage from "../../Pages/Shared/UploadImage/UploadImage";
 import { PropTypes } from "prop-types";
 import { useNavigate } from "react-router-dom";
 
-const ItemAddUpdate = ({ item }) => {
+const ItemAddUpdate = ({ item, fromUser }) => {
   const navigate = useNavigate();
   const [axiosSecure] = UseAxiosSecure();
   const { user, loading } = UseAuth();
@@ -54,12 +54,12 @@ const ItemAddUpdate = ({ item }) => {
         timer: 1500,
       });
     reset();
-    navigate("/dashboard/manageItems");
+    navigate(fromUser ? "/dashboard/userManageItem" : "/dashboard/manageItems");
   };
   return (
     <div className="mx-auto w-full">
-      <div className="w-full md:w-2/3 mx-auto">
-        <form onSubmit={handleSubmit(onSubmit)} className="md:px-20">
+      <div className="md:w-4/5 my-5 bg-slate-50 rounded-lg pt-20 mx-auto">
+        <form onSubmit={handleSubmit(onSubmit)} className="px-8 md:px-20">
           <div className="form-control w-full">
             <label className="label">
               <span className="label-text">Title</span>
@@ -150,4 +150,5 @@ ItemAddUpdate.propTypes = {
     body: PropTypes.string,
     image: PropTypes.string,
   }),
+  fromUser: PropTypes.bool,
 };

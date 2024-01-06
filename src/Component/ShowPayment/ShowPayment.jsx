@@ -1,14 +1,12 @@
 import { PropTypes } from "prop-types";
 import { motion } from "framer-motion";
 import rowAnimation from "../../Pages/Shared/Animation/rowAnimation";
+import titleCSS from "../../Pages/Shared/CSS/DashboardTitle";
 const ShowPayment = ({ payments }) => {
-  // console.log(payments);
   return (
     <div>
       <div className="mx-auto text-xl">
-        <h3 className="text-4xl text-secondary font-semibold text-center mb-5">
-          Payment History
-        </h3>
+        <h3 className={titleCSS}>Payment History</h3>
         <table className="table">
           {/* head */}
           <thead>
@@ -19,7 +17,7 @@ const ShowPayment = ({ payments }) => {
               <th>Price</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="text-xs md:text-sm">
             {/* rows */}
             {payments?.map(
               ({ email, name, price, items, transactionId }, index) => (

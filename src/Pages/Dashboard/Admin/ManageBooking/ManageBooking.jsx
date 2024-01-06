@@ -4,6 +4,7 @@ import Loader from "./../../../Shared/Loader/Loader";
 import { motion } from "framer-motion";
 import rowAnimation from "../../../Shared/Animation/rowAnimation";
 import { Helmet } from "react-helmet";
+import titleCSS from "../../../Shared/CSS/DashboardTitle";
 
 const ManageBooking = () => {
   const [axiosSecure] = UseAxiosSecure();
@@ -36,11 +37,9 @@ const ManageBooking = () => {
           <h3 className="text-2xl font-semibold my-8">
             Total Booked Session: {allBooking.length}
           </h3>
-          <h3 className="text-4xl text-secondary font-semibold text-center mb-5">
-            Manage All Booking Sessions
-          </h3>
+          <h3 className={titleCSS}>Manage All Booking Sessions</h3>
           <div>
-            <table className="table">
+            <table className="md:table text-xs md:text-sm">
               {/* head */}
               <thead>
                 <tr>
@@ -66,28 +65,28 @@ const ManageBooking = () => {
                       viewport={{ once: true }}
                       variants={rowAnimation}
                     >
-                      <td className="max-w-[250px] font-semibold text-xs">
+                      <td className="max-w-[250px] font-semibold text-xs px-2 py-4">
                         {sessionType}
                       </td>
-                      <td>
+                      <td className="px-2">
                         <div>
                           <div className="font-semibold">{name}</div>
                           <div className="text-xs">{email}</div>
                         </div>
                       </td>
-                      <td>
+                      <td className="px-2">
                         <div>
                           <div>{date}</div>
                         </div>
                       </td>
-                      <td className="text-right">$ {price}</td>
-                      <td className="text-primary">
+                      <td className="text-right px-2">${price}</td>
+                      <td className="text-primary px-2 text-center">
                         {status === "done" ? (
                           <span className="capitalize">{status}</span>
                         ) : (
                           <button
                             onClick={() => changeStatusHandler(_id)}
-                            className="btn text-sm text-slate-600 btn-ghost"
+                            className="btn text-xs text-slate-600 btn-ghost btn-sm "
                           >
                             Pending
                           </button>

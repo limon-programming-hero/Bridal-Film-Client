@@ -50,7 +50,7 @@ const ShopModal = ({ session }) => {
       <dialog id={_id} className="modal modal-bottom sm:modal-middle">
         <div className="modal-box ">
           <h3 className="font-bold text-secondary text-xl">{sessionType}</h3>
-          <p className="py-4 text-xs">Price: {price}</p>
+          <p className="py-4 text-xs">Price: ${price}</p>
           <ul>
             <h4 className="font-semibold text-lg">Features:</h4>
             {features.map((feature, index) => (

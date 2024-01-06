@@ -105,6 +105,14 @@ const DashboardLayout = () => {
                   <NavLink to="/dashboard/userHome">Home</NavLink>
                 </li>
                 <li>
+                  <NavLink to="/dashboard/userAddItem">Add Photo</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/userManageItem">
+                    Manage Photos
+                  </NavLink>
+                </li>
+                <li>
                   <NavLink to="/dashboard/bookedSession">
                     Booked Sessions
                   </NavLink>

@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import Loader from "../../../Shared/Loader/Loader";
-import UseSessions from "./../../../../Hooks/UseSessions";
+import UseSessions from "../../../../Hooks/UseSessions";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { motion } from "framer-motion";
 import rowAnimation from "../../../Shared/Animation/rowAnimation";
 import { Helmet } from "react-helmet";
+import titleCSS from "../../../Shared/CSS/DashboardTitle";
 
-const Sessions = () => {
+const ManageSessions = () => {
   const { sessions, isSessionLoading } = UseSessions();
   return (
     <div className="mx-auto">
@@ -19,9 +20,7 @@ const Sessions = () => {
           <h3 className="text-2xl font-semibold my-8">
             Total Session: {sessions.length}
           </h3>
-          <h3 className="text-4xl text-secondary font-semibold text-center mb-5">
-            Manage All Booking Sessions
-          </h3>
+          <h3 className={titleCSS}>Manage All Booking Sessions</h3>
           <div>
             <table className="table">
               {/* head */}
@@ -34,7 +33,7 @@ const Sessions = () => {
                   <th>Action</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="text-xs md:text-sm">
                 {/* row 1 */}
                 {sessions.map((item, index) => {
                   const { _id, sessionType, image, features, price } = item;
@@ -47,7 +46,7 @@ const Sessions = () => {
                       viewport={{ once: true }}
                       variants={rowAnimation}
                     >
-                      <td className="text-sm font-semibold">
+                      <td className="font-semibold">
                         <div className="flex gap-3">
                           <div className="avatar">
                             <div className="mask mask-squircle w-12 h-12">
@@ -92,4 +91,4 @@ const Sessions = () => {
   );
 };
 
-export default Sessions;
+export default ManageSessions;

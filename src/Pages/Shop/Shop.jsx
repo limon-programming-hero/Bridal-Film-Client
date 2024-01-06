@@ -15,7 +15,7 @@ const Shop = () => {
         <span className="text-secondary text-4xl">Book now!</span>
       </h3>
       {isSessionLoading && <Loader className="mx-auto"></Loader>}
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 mx-3 lg:mx-0">
         {sessions &&
           sessions?.map((session, index) => (
             <ShopCard session={session} key={index}></ShopCard>

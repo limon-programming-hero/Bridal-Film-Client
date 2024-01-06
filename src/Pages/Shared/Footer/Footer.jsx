@@ -1,17 +1,30 @@
 import { BsFacebook, BsInstagram, BsYoutube } from "react-icons/bs";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="p-10 bg-neutral text-neutral-content mt-10">
       <div className="flex mb-10  flex-row justify-center gap-x-8">
-        <a className="text-2xl">
+        <Link
+          target="_blank"
+          to="https://www.facebook.com"
+          className="text-2xl hover:scale-125 focus:scale-75"
+        >
           <BsFacebook></BsFacebook>
-        </a>
-        <a className="text-2xl">
+        </Link>
+        <Link
+          target="_blank"
+          to="https://www.instagram.com/"
+          className="text-2xl hover:scale-125 focus:scale-75"
+        >
           <BsInstagram></BsInstagram>
-        </a>
-        <a className="text-2xl">
+        </Link>
+        <Link
+          target="_blank"
+          to="https://www.youtube.com/"
+          className="text-2xl hover:scale-125 focus:scale-75"
+        >
           <BsYoutube></BsYoutube>
-        </a>
+        </Link>
       </div>
       <div className="divider"></div>
       <footer className="footer">

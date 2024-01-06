@@ -28,7 +28,7 @@ const UseItems = () => {
       });
     },
   });
-  console.log({ items });
+  // console.log({ items });
   return {
     items,
     isItemsLoading,

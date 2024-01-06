@@ -10,14 +10,12 @@ import LogIn from "../Pages/LogIn/LogIn";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../Layout/DashboardLayout";
 import AdminHome from "../Pages/Dashboard/Admin/AdminHome/AdminHome";
-import ManageItems from "../Pages/Dashboard/Admin/ManageItems/ManageItems";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUsers/ManageUsers";
 import ContactPage from "../Pages/Dashboard/ContactPage/ContactPage";
 import Shop from "../Pages/Shop/Shop";
 import ManageBooking from "./../Pages/Dashboard/Admin/ManageBooking/ManageBooking";
 import UserBookingItems from "../Pages/Dashboard/User/UserBookingItems/UserBookingItems";
 import AdminRoute from "./AdminRoute";
-import Sessions from "../Pages/Dashboard/Admin/Sessions/Sessions";
 import AddSession from "../Pages/Dashboard/Admin/AddSession/AddSession";
 import UpdateSession from "../Pages/Dashboard/Admin/UpdateSession/UpdateSession";
 import Payment from "../Pages/Dashboard/Payments/Payment";
@@ -26,6 +24,10 @@ import UserPayment from "../Pages/Dashboard/User/UserPayment/UserPayment";
 import UpdateItem from "../Pages/Dashboard/Admin/UpdateItem/UpdateItem";
 import AddItems from "../Pages/Dashboard/Admin/AddItems/AddItems";
 import UserHome from "../Pages/Dashboard/User/UserHome/UserHome";
+import UserAddItem from "../Pages/Dashboard/User/UserAddItem/UserAddItem";
+import UserManageItem from "../Pages/Dashboard/User/UserManageItems/UserManageItems";
+import AdminManageItems from "../Pages/Dashboard/Admin/AdminManageItems/AdminManageItems";
+import ManageSessions from "../Pages/Dashboard/Admin/ManageSessions/ManageSessions";
 
 const router = createBrowserRouter([
   {
@@ -84,6 +86,14 @@ const router = createBrowserRouter([
         element: <UserHome />,
       },
       {
+        path: "userAddItem",
+        element: <UserAddItem />,
+      },
+      {
+        path: "userManageItem",
+        element: <UserManageItem />,
+      },
+      {
         path: "makePayment",
         element: <Payment />,
       },
@@ -130,7 +140,7 @@ const router = createBrowserRouter([
         path: "manageItems",
         element: (
           <AdminRoute>
-            <ManageItems />
+            <AdminManageItems />
           </AdminRoute>
         ),
       },
@@ -162,7 +172,7 @@ const router = createBrowserRouter([
         path: "manageSessions",
         element: (
           <AdminRoute>
-            <Sessions />
+            <ManageSessions />
           </AdminRoute>
         ),
       },

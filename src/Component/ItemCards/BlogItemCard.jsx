@@ -3,10 +3,13 @@ import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import UseAuth from "./../../Hooks/UseAuth";
 import UseAxiosSecure from "../../Hooks/UseAxiosSecure";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Puff } from "react-loader-spinner";
 
 const BlogItemCard = ({ data, refetch }) => {
   const [axiosSecure] = UseAxiosSecure();
   const { user, loading } = UseAuth();
+  const [likeAnimation, setLikeAnimation] = useState(false);
   const navigate = useNavigate();
 
   const likeHandler = () => {
@@ -15,6 +18,7 @@ const BlogItemCard = ({ data, refetch }) => {
         isLike: !data?.isLiked,
         email: user?.email,
       };
+      setLikeAnimation(true);
       axiosSecure
         .patch(
           `https://bridal-film-server.vercel.app/item/like/${data?._id}`,
@@ -32,6 +36,7 @@ const BlogItemCard = ({ data, refetch }) => {
             console.log(res?.data);
           }
           refetch();
+          setLikeAnimation(false);
           console.log(res?.data);
         });
     } else {
@@ -50,17 +55,29 @@ const BlogItemCard = ({ data, refetch }) => {
         <p className="my-4">{data?.body}</p>
         <div className="card-actions justify-between">
           <button onClick={likeHandler}>
-            <div className="badge cursor-pointer flex gap-2 badge-outline">
-              {data?.likes ? data.likes : 0}
-              {data?.isLiked ? (
-                <span className="text-secondary">
-                  <AiFillHeart />
-                </span>
-              ) : (
-                <AiOutlineHeart />
-              )}{" "}
-              Likes
-            </div>
+            {likeAnimation ? (
+              <Puff
+                visible={true}
+                height="25"
+                width="25"
+                color="rgb(255, 145, 0)"
+                ariaLabel="puff-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+              />
+            ) : (
+              <div className="badge cursor-pointer flex gap-2 badge-outline">
+                {data?.likes ? data.likes : 0}
+                {data?.isLiked ? (
+                  <span className="text-secondary">
+                    <AiFillHeart />
+                  </span>
+                ) : (
+                  <AiOutlineHeart />
+                )}
+                Likes
+              </div>
+            )}
           </button>
           <div className="badge cursor-pointer badge-outline">
             {data?.comment ? data.comment : "No Comment"}

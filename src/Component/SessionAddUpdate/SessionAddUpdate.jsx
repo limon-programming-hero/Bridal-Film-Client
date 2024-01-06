@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import UploadImage from "../../Pages/Shared/UploadImage/UploadImage";
+import titleCSS from "./../../Pages/Shared/CSS/DashboardTitle";
 
 const SessionAddUpdate = ({ session }) => {
   const navigate = useNavigate();
@@ -58,9 +59,7 @@ const SessionAddUpdate = ({ session }) => {
         <h3 className="text-xl font-semibold text-center">
           Want to add new Session?
         </h3>
-        <h3 className="text-3xl text-center font-bold text-secondary">
-          Add Now!
-        </h3>
+        <h3 className={titleCSS}>Add Now!</h3>
       </div>
       <div className="w-full md:w-2/3 mx-auto">
         <form onSubmit={handleSubmit(onSubmit)} className="md:px-20">

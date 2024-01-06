@@ -103,13 +103,13 @@ const ItemsTab = ({ location }) => {
         )}
       </div>
       <Tabs>
-        <div className="w-full items-center">
+        <div className="mx-10 md:mx-0 items-center">
           {/* this is tablist heading portion */}
-          <TabList className="mx-auto bg-slate-100 p-x-3 p-y-2 z-10 flex gap-x-3 w-fit">
+          <TabList className="mx-auto bg-slate-100 z-10 flex gap-x-3 md:w-fit">
             {tabDetails?.map((tabDetail, index) => (
               <Tab
                 key={index}
-                className="hover:text-secondary cursor-pointer p-3"
+                className="hover:text-secondary cursor-pointer py-3 px-1 md:p-3"
               >
                 {tabDetail?.name}
               </Tab>
@@ -119,7 +119,7 @@ const ItemsTab = ({ location }) => {
         {/* this is tablist data or tab panel portion. tab list is dynamic here*/}
         {isItemsLoading && <Loader></Loader>}
         {tabDetails?.map((tabDetail, index) => (
-          <TabPanel key={index}>
+          <TabPanel className="mx-5 lg:mx-0" key={index}>
             {/* if it is called from blog page then it will show like this */}
             {!isItemsLoading && isBlog && (
               <motion.div

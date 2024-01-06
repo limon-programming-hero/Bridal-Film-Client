@@ -85,6 +85,7 @@ const LogIn = () => {
           });
       })
       .catch((error) => {
+        setLocalLoading(false);
         const errorMessage = error.message;
         console.log(errorMessage);
         Swal.fire({

@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import ItemAddUpdate from "../../../../Component/ItemAddUpdate/ItemAddUpdate";
 import UseItems from "../../../../Hooks/UseItems";
 import { Helmet } from "react-helmet";
+import titleCSS from "../../../Shared/CSS/DashboardTitle";
 
 const UpdateItem = () => {
   const { id } = useParams();
@@ -18,9 +19,7 @@ const UpdateItem = () => {
         <h3 className="text-xl font-semibold text-center">
           Want to Update a new Item?
         </h3>
-        <h3 className="text-3xl text-center font-bold text-secondary">
-          Update Now!
-        </h3>
+        <h3 className={titleCSS}>Update Now!</h3>
       </div>
       <ItemAddUpdate item={item}></ItemAddUpdate>
     </div>
